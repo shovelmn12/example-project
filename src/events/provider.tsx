@@ -1,0 +1,14 @@
+import { EventsBusContext } from "./context";
+import { useMemo, mitt } from "@/utils";
+import { type JSX } from "@/theme";
+
+export function EventsBusProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
+  return (
+    <EventsBusContext.Provider value={useMemo(() => mitt(), [])}>
+      {" "}
+      {children}
+    </EventsBusContext.Provider>
+  );
+}
