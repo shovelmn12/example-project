@@ -1,4 +1,4 @@
-import { Box, Button, Card, useLocation } from "@/theme";
+import { Box, Button, Card, Text, useLocation } from "@/theme";
 import { CreateUser, UsersCount, UsersTable } from "@/users";
 import type { JSX } from "@/theme";
 import { Previous } from "grommet-icons";
@@ -22,7 +22,9 @@ export function UsersScreen(): JSX.Element {
           overflow="auto"
         >
           <CreateUser />
-          <UsersCount />
+          <Text size="xsmall">
+            User Count: <UsersCount />
+          </Text>
           <UsersTable />
         </Card>
       </Box>
