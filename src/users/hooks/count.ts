@@ -1,4 +1,5 @@
-import { UsersContext, type User } from "@/users";
+import { UsersContext } from "../context";
+import { type User } from "../models";
 import { useBlocSelectState } from "@/utils";
 
 export function useUsersCount(): number {

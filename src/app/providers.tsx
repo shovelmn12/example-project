@@ -1,6 +1,11 @@
-import { UsersProvider } from "@/users/provider";
+import { UsersProvider } from "@/users";
+import { FirebaseProvider } from "@/firebase";
 import { type JSX } from "@/theme";
 
 export function Providers({ children }: React.PropsWithChildren): JSX.Element {
-  return <UsersProvider>{children}</UsersProvider>;
+  return (
+    <FirebaseProvider>
+      <UsersProvider>{children}</UsersProvider>
+    </FirebaseProvider>
+  );
 }

@@ -7,7 +7,6 @@ export function EventsBusProvider({
 }: React.PropsWithChildren): JSX.Element {
   return (
     <EventsBusContext.Provider value={useMemo(() => mitt(), [])}>
-      {" "}
       {children}
     </EventsBusContext.Provider>
   );

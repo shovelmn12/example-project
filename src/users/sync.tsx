@@ -2,7 +2,6 @@ import { useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
 
 import { useUsersBloc } from "./hooks";
-import { UsersContext } from "./context";
 
 export function UsersSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
@@ -14,5 +13,5 @@ export function UsersSync({ children }: React.PropsWithChildren) {
     return () => bus.off("users", bloc.add);
   }, [bus, bloc.add]);
 
-  return <UsersContext.Provider value={bloc}>{children}</UsersContext.Provider>;
+  return <>{children}</>;
 }

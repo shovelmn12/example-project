@@ -5,12 +5,11 @@ import {
   type CreateBlocProps,
   type EventHandlersObject,
 } from "@/utils";
-import { type UsersEvent, type User } from "@/users";
+import { type UsersEvent, type User } from "./models";
 import { UsersContext } from "./context";
 import { type EventsEmitter, useEventsBus } from "@/events";
 
 function createHandlers(
-  // pass params needed
   bus: EventsEmitter
 ): EventHandlersObject<UsersEvent, Record<string, User>> {
   return {
