@@ -1,52 +1,43 @@
-import { WSwitch, Route, type JSX, Box, Meter } from "@/theme";
-import { Providers } from "./providers";
+import { type JSX, Box, Meter } from "@/theme";
 import { lazy, Suspense } from "react";
-import { Syncs } from "./sync";
 import { useIsFirebaseInitialized } from "@/firebase";
+import { Providers } from "./providers";
+import { Syncs } from "./sync";
 
-const HomeScreen = lazy(async () => ({
-  default: (await import("./home")).HomeScreen,
-}));
-const UsersScreen = lazy(async () => ({
-  default: (await import("./users")).UsersScreen,
+const Router = lazy(async () => ({
+  default: (await import("./router")).Router,
 }));
 
 export function App(): JSX.Element {
+  return (
+    <Wrapper>
+      <Container>
+        <Router />
+      </Container>
+    </Wrapper>
+  );
+}
+
+function Container({ children }: React.PropsWithChildren): JSX.Element {
   const isInit = useIsFirebaseInitialized();
 
-  console.log("is init", isInit);
+  return (
+    <Suspense
+      fallback={
+        <Box justify="center" align="center" animation="pulse" fill>
+          <Meter type="circle" size="small" color="brand" round />
+        </Box>
+      }
+    >
+      {isInit && children}
+    </Suspense>
+  );
+}
 
+function Wrapper({ children }: React.PropsWithChildren): JSX.Element {
   return (
     <Providers>
-      <Syncs>
-        {isInit && (
-          <Suspense
-            fallback={
-              <Box justify="center" align="center" animation="pulse" fill>
-                <Meter type="circle" size="small" color="brand" round />
-              </Box>
-            }
-          >
-            <WSwitch>
-              <Route
-                path="/users"
-                component={() => (
-                  <Box animation="fadeIn" fill>
-                    <UsersScreen />
-                  </Box>
-                )}
-              />
-              <Route
-                component={() => (
-                  <Box animation="fadeIn" fill>
-                    <HomeScreen />
-                  </Box>
-                )}
-              />
-            </WSwitch>
-          </Suspense>
-        )}
-      </Syncs>
+      <Syncs>{children}</Syncs>
     </Providers>
   );
 }

@@ -23,15 +23,15 @@ function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<FirebaseEvent, FirebaseState> {
   return {
-    init: (_, { update }) => {
+    init: (_, context) => {
       try {
         const app = initializeApp(config);
 
-        update({ type: "initialized", app });
+        context.update({ type: "initialized", app });
 
         bus.emit("firebase", { type: "initialized" });
       } catch (error) {
-        update({ type: "error", error });
+        context.update({ type: "error", error });
 
         bus.emit("firebase", { type: "error", error });
       }
