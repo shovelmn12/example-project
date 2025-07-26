@@ -11,9 +11,11 @@
   "dependencies": {
     "@bloc/core": "file:../bloc/packages/core",
     "@bloc/react": "file:../bloc/packages/react",
+    "@heroui/react": "^2.8.1",
     "@paralleldrive/cuid2": "^2.2.2",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "firebase": "^12.0.0",
+    "framer-motion": "^12.23.9",
     "grommet": "^2.47.0",
     "grommet-icons": "^4.14.0",
     "grommet-theme-hpe": "^6.4.2",

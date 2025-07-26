@@ -7,8 +7,10 @@ export function HomeScreen(): JSX.Element {
   const onClick = useCallback(() => navigate("/users"), [navigate]);
 
   return (
-    <Box justify="center" align="center" fill>
-      <Button onClick={onClick} label="Users" />
-    </Box>
+    // <Box justify="center" align="center" fill>
+    <Button onPress={onClick} size="lg">
+      Users
+    </Button>
+    // </Box>
   );
 }

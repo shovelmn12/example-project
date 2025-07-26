@@ -10,9 +10,9 @@ export function CreateUser(): JSX.Element {
 
   return (
     <Button
-      onClick={useCallback(() => bus.emit("users", { type: "create" }), [bus])}
-      icon={<AddCircle />}
-      label="Create User"
-    />
+      onPress={useCallback(() => bus.emit("users", { type: "create" }), [bus])}
+    >
+      <AddCircle /> Create User
+    </Button>
   );
 }
