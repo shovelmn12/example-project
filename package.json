@@ -12,6 +12,7 @@
     "@bloc/core": "file:../bloc/packages/core",
     "@bloc/react": "file:../bloc/packages/react",
     "@paralleldrive/cuid2": "^2.2.2",
+    "@tailwindcss/vite": "^4.1.11",
     "@vitejs/plugin-react-swc": "^3.11.0",
     "firebase": "^12.0.0",
     "grommet": "^2.47.0",
@@ -20,7 +21,9 @@
     "mitt": "^3.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "shadcn_components": "file:../shadcn_components",
     "styled-components": "^6.1.19",
+    "tailwindcss": "^4.1.11",
     "wouter": "^3.7.1"
   },
   "devDependencies": {

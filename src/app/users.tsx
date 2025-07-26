@@ -1,4 +1,4 @@
-import { Box, Button, Card, Text, useLocation } from "@/theme";
+import { Box, Button, Card, useLocation } from "@/theme";
 import { CreateUser, UsersCount, UsersTable } from "@/users";
 import type { JSX } from "@/theme";
 import { Previous } from "grommet-icons";
@@ -10,22 +10,24 @@ export function UsersScreen(): JSX.Element {
 
   return (
     <Box align="start" pad="medium" fill>
-      <Button icon={<Previous />} onClick={onBack} />
+      <Button onClick={onBack}>
+        <Previous />
+      </Button>
       <Box justify="center" align="center" fill>
-        <Card
-          pad="medium"
-          justify="center"
-          align="center"
-          gap="medium"
-          width={{ min: "medium" }}
-          height={{ min: "small" }}
-          overflow="auto"
-        >
-          <CreateUser />
-          <Text size="xsmall">
-            User Count: <UsersCount />
-          </Text>
-          <UsersTable />
+        <Card>
+          <Box
+            pad="medium"
+            justify="center"
+            align="center"
+            gap="medium"
+            direction="row"
+          >
+            <CreateUser />
+            <>
+              User Count: <UsersCount />
+            </>
+            <UsersTable />
+          </Box>
         </Card>
       </Box>
     </Box>

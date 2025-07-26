@@ -8,7 +8,7 @@ export function HomeScreen(): JSX.Element {
 
   return (
     <Box justify="center" align="center" fill>
-      <Button onClick={onClick} label="Users" />
+      <Button onClick={onClick}>Users</Button>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import { type JSX, Box, Meter } from "@/theme";
+import { type JSX, Box, Progress } from "@/theme";
 import { lazy, Suspense } from "react";
 import { useIsFirebaseInitialized } from "@/firebase";
 import { Providers } from "./providers";
@@ -24,8 +24,8 @@ function Container({ children }: React.PropsWithChildren): JSX.Element {
   return (
     <Suspense
       fallback={
-        <Box justify="center" align="center" animation="pulse" fill>
-          <Meter type="circle" size="small" color="brand" round />
+        <Box justify="center" align="center" fill>
+          {/* <Progress /> */}
         </Box>
       }
     >

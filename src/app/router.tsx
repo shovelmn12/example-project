@@ -19,14 +19,14 @@ export function Router(): JSX.Element {
           <Route
             path="/users"
             component={() => (
-              <Box animation="fadeIn" fill>
+              <Box fill>
                 <UsersScreen />
               </Box>
             )}
           />
           <Route
             component={() => (
-              <Box animation="fadeIn" fill>
+              <Box fill>
                 <HomeScreen />
               </Box>
             )}
