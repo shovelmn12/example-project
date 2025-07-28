@@ -25,7 +25,7 @@ function Container({ children }: React.PropsWithChildren): JSX.Element {
     <Suspense
       fallback={
         <Box justify="center" align="center" fill>
-          <CircularProgress />
+          <CircularProgress aria-label="loading" />
         </Box>
       }
     >
