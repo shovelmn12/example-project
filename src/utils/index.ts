@@ -15,3 +15,5 @@ export {
   type CreateBlocProps,
   type EventHandlersObject,
 } from "@bloc/core";
+export * from "./cn";
+export * from "./hooks";

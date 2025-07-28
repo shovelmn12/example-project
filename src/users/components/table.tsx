@@ -1,7 +1,6 @@
-import { Button, type JSX } from "@/theme";
+import { Button, type JSX, Icons } from "@/theme";
 import { useUsersList } from "../hooks";
-import { useMemo } from "react";
-import { Trash } from "grommet-icons";
+import { useMemo } from "@/utils";
 import { useEventsBus } from "@/events";
 
 export function UsersTable(): JSX.Element {
@@ -15,7 +14,7 @@ export function UsersTable(): JSX.Element {
           <Button
             onClick={() => bus.emit("users", { type: "delete", id: user.id })}
           >
-            <Trash />
+            <Icons.Trash />
           </Button>
         ),
       })),

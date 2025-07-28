@@ -1,7 +1,6 @@
-import { Button, type JSX } from "@/theme";
+import { Button, type JSX, Icons } from "@/theme";
 import { useEventsBus } from "@/events";
 import { useCallback } from "@/utils";
-import { AddCircle } from "grommet-icons";
 
 export function CreateUser(): JSX.Element {
   const bus = useEventsBus();
@@ -12,7 +11,7 @@ export function CreateUser(): JSX.Element {
     <Button
       onClick={useCallback(() => bus.emit("users", { type: "create" }), [bus])}
     >
-      <AddCircle /> Create User
+      <Icons.Plus /> Create User
     </Button>
   );
 }

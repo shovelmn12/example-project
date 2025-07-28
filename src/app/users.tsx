@@ -1,7 +1,6 @@
 import { Box, Button, Card, useLocation } from "@/theme";
 import { CreateUser, UsersCount, UsersTable } from "@/users";
-import type { JSX } from "@/theme";
-import { Previous } from "grommet-icons";
+import { type JSX, Icons } from "@/theme";
 import { useCallback } from "react";
 
 export function UsersScreen(): JSX.Element {
@@ -11,7 +10,7 @@ export function UsersScreen(): JSX.Element {
   return (
     <Box align="start" pad="medium" fill>
       <Button onClick={onBack}>
-        <Previous />
+        <Icons.ChevronLeft />
       </Button>
       <Box justify="center" align="center" fill>
         <Card>
