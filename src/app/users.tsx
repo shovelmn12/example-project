@@ -1,7 +1,6 @@
-import { Box, Button, Card, Text, useLocation } from "@/theme";
+import { Box, Button, Card, Text, useLocation, type JSX } from "@/theme";
 import { CreateUser, UsersCount, UsersTable } from "@/users";
-import type { JSX } from "@/theme";
-import { Previous } from "grommet-icons";
+import { ChevronLeft } from "lucide-react";
 import { useCallback } from "react";
 
 export function UsersScreen(): JSX.Element {
@@ -10,7 +9,7 @@ export function UsersScreen(): JSX.Element {
 
   return (
     <Box align="start" pad="medium" fill>
-      <Button icon={<Previous />} onClick={onBack} />
+      <Button icon={<ChevronLeft size="16px" />} onClick={onBack} />
       <Box justify="center" align="center" fill>
         <Card
           pad="medium"

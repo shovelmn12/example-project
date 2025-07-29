@@ -1,9 +1,57 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ThemeType } from "grommet";
+import { generate, type ThemeType } from "grommet";
 import type { ExtendProps } from "grommet/themes/base";
+import { deepMerge } from "grommet/utils";
 
 export { grommet } from "grommet/themes";
 export * from "grommet-theme-hpe";
+
+export const aTheme: ThemeType = {
+  global: {
+    font: {
+      family: "Geist",
+    },
+  },
+  button: {
+    border: {
+      radius: "8px",
+    },
+    size: {
+      small: {
+        border: {
+          radius: "8px",
+        },
+      },
+      medium: {
+        border: {
+          radius: "8px",
+        },
+      },
+      large: {
+        border: {
+          radius: "8px",
+        },
+      },
+    },
+    default: {
+      background: {
+        color: "brand",
+      },
+      padding: {
+        horizontal: "16px",
+        vertical: "8px",
+      },
+      font: {
+        size: "small",
+        weight: "500",
+      },
+    },
+  },
+};
+
+export const myTheme: ThemeType = deepMerge(generate(16), aTheme);
+
+console.log(myTheme);
 
 export const materialTheme: ThemeType = {
   global: {
