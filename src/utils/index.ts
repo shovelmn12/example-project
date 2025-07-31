@@ -9,3 +9,4 @@ export {
 } from "@bloc/core";
 export { useLocation } from "wouter";
 export * from "./react";
+export * from "./grommet";
