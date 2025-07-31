@@ -1,5 +1,7 @@
 import { createContext } from "@/utils";
-import LocalizedStrings from "react-localization";
+import LocalizedStrings, {
+  type LocalizedStrings as LocalizedStringsType,
+} from "react-localization";
 
 export type Strings = {
   readonly home: {
@@ -14,7 +16,7 @@ export type Strings = {
   };
 };
 
-export type Localization = typeof LocalizedStrings<Strings>;
+export type Localization = LocalizedStringsType<Strings>;
 
 export const LocalizationContext = createContext<Localization>(
   new LocalizedStrings<Strings>({
