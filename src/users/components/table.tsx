@@ -10,9 +10,11 @@ import { useUsersList } from "../hooks";
 import { useMemo } from "react";
 import { useEventsBus } from "@/events";
 import { Trash } from "grommet-icons";
+import { useStrings } from "@/localizations";
 
 export function UsersTable(): JSX.Element {
   const bus = useEventsBus();
+  const strings = useStrings();
   const users = useUsersList();
   const data = useMemo(
     () =>
@@ -39,13 +41,13 @@ export function UsersTable(): JSX.Element {
         columns={[
           {
             property: "id",
-            header: "ID",
+            header: strings.users.fields.id,
             sortable: true,
             search: true,
           },
           {
             property: "email",
-            header: "EMAIL",
+            header: strings.users.fields.email,
             sortable: true,
             search: true,
           },

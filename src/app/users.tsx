@@ -1,3 +1,4 @@
+import { useStrings } from "@/localizations";
 import { Box, Button, Card, Text, type JSX } from "@/theme";
 import { Previous } from "@/theme/icons";
 import { CreateUser, UsersCount, UsersTable } from "@/users";
@@ -5,6 +6,7 @@ import { useLocation, useCallback } from "@/utils";
 
 export function UsersScreen(): JSX.Element {
   const [, navigate] = useLocation();
+  const strings = useStrings();
   const onBack = useCallback(() => navigate(".."), [navigate]);
 
   return (
@@ -22,7 +24,7 @@ export function UsersScreen(): JSX.Element {
         >
           <CreateUser />
           <Text size="xsmall">
-            User Count: <UsersCount />
+            {strings.users.count}: <UsersCount />
           </Text>
           <UsersTable />
         </Card>

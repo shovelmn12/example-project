@@ -1,10 +1,7 @@
 import { useContext } from "@/utils";
 
-import {
-  type Localization,
-  LocalizationContext,
-  type Strings,
-} from "./context";
+import { type Localization, LocalizationContext } from "./context";
+import { type Strings } from "./strings";
 
 export function useLocalizations(): Localization {
   return useContext(LocalizationContext);
