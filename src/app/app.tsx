@@ -1,6 +1,7 @@
-import { type JSX, Box, Meter } from "@/theme";
-import { lazy, Suspense } from "react";
+import { type JSX, Box, Meter, Suspense } from "@/theme";
+import { lazy } from "@/utils";
 import { useIsFirebaseInitialized } from "@/firebase";
+
 import { Providers } from "./providers";
 import { Syncs } from "./sync";
 

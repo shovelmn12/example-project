@@ -12,6 +12,14 @@ export const aTheme: ThemeType = {
       family: "Geist",
     },
   },
+  icon: {
+    size: {
+      small: "6px",
+      medium: "12px",
+      large: "24px",
+      xlarge: "48px",
+    },
+  },
   button: {
     border: {
       radius: "8px",

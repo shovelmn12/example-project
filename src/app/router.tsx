@@ -1,5 +1,5 @@
 import { WSwitch, Route, type JSX, Box } from "@/theme";
-import { lazy } from "react";
+import { lazy } from "@/utils";
 import { useIsFirebaseInitialized } from "@/firebase";
 
 const HomeScreen = lazy(async () => ({

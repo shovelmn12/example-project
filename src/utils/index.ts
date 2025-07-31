@@ -1,13 +1,5 @@
-export {
-  useCallback,
-  useEffect,
-  createContext,
-  use as useContext,
-  useMemo,
-} from "react";
 export * from "./id";
-export * from "mitt";
-export { default as mitt } from "mitt";
+export { default as mitt, type Emitter } from "mitt";
 export { useBlocSelectState, useCreateBloc, useBloc } from "@bloc/react";
 export {
   EMPTY,
@@ -15,3 +7,5 @@ export {
   type CreateBlocProps,
   type EventHandlersObject,
 } from "@bloc/core";
+export { useLocation } from "wouter";
+export * from "./react";

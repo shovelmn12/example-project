@@ -1,6 +1,5 @@
 import { Button, Box, type JSX } from "@/theme";
-import { useCallback } from "react";
-import { useLocation } from "wouter";
+import { useCallback, useLocation } from "@/utils";
 
 export function HomeScreen(): JSX.Element {
   const [, navigate] = useLocation();

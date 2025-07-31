@@ -8,8 +8,8 @@ import {
 } from "@/theme";
 import { useUsersList } from "../hooks";
 import { useMemo } from "react";
-import { Trash } from "lucide-react";
 import { useEventsBus } from "@/events";
+import { Trash } from "grommet-icons";
 
 export function UsersTable(): JSX.Element {
   const bus = useEventsBus();
@@ -20,7 +20,7 @@ export function UsersTable(): JSX.Element {
         ...user,
         actions: (
           <Button
-            icon={<Trash size="16px" />}
+            icon={<Trash />}
             onClick={() => bus.emit("users", { type: "delete", id: user.id })}
           />
         ),

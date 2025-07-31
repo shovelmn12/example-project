@@ -1,13 +1,15 @@
+import { initializeApp } from "firebase/app";
+
 import {
   useCreateBloc,
   useMemo,
   type CreateBlocProps,
   type EventHandlersObject,
 } from "@/utils";
-import { FirebaseContext } from "./context";
 import { type EventsEmitter, useEventsBus } from "@/events";
+
+import { FirebaseContext } from "./context";
 import { type FirebaseEvent, type FirebaseState } from "./models";
-import { initializeApp } from "firebase/app";
 
 const config = {
   apiKey: "AIzaSyCHZ1iODNpSsB3GjlvGBwQb6IaPts38deY",

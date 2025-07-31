@@ -1,7 +1,8 @@
 import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
-import { useLogger } from "./hooks";
 import { type JSX } from "@/theme";
+
+import { useLogger } from "./hooks";
 
 export function LoggerSync({ children }: React.PropsWithChildren): JSX.Element {
   if (import.meta.env.DEV) {

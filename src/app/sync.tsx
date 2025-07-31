@@ -2,7 +2,7 @@ import { UsersSync } from "@/users";
 import { FirebaseSync } from "@/firebase";
 import { type JSX } from "@/theme";
 import { useEventsBus } from "@/events";
-import { useEffect } from "react";
+import { useEffect } from "@/utils";
 
 export function AppSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();

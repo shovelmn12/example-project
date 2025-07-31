@@ -1,9 +1,11 @@
 import { App } from "@/app";
 import { EventsBusProvider } from "@/events";
 import { LoggerSync } from "@/logger";
-import { Grommet, myTheme as theme, StrictMode, createRoot } from "@/theme";
+import { Grommet, myTheme as theme, StrictMode } from "@/theme";
+import { render } from "@/utils";
 
-createRoot(document.getElementById("root")!).render(
+render(
+  document.getElementById("root")!,
   <StrictMode>
     <Grommet theme={theme} themeMode="auto" full>
       <EventsBusProvider>

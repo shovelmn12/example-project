@@ -1,7 +1,7 @@
 import { Button, type JSX } from "@/theme";
 import { useEventsBus } from "@/events";
 import { useCallback } from "@/utils";
-import { CirclePlus } from "lucide-react";
+import { AddCircle } from "grommet-icons";
 
 export function CreateUser(): JSX.Element {
   const bus = useEventsBus();
@@ -11,7 +11,7 @@ export function CreateUser(): JSX.Element {
   return (
     <Button
       onClick={useCallback(() => bus.emit("users", { type: "create" }), [bus])}
-      icon={<CirclePlus size="16px" />}
+      icon={<AddCircle />}
       label="Create User"
     />
   );

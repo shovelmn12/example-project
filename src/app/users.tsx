@@ -1,7 +1,7 @@
-import { Box, Button, Card, Text, useLocation, type JSX } from "@/theme";
+import { Box, Button, Card, Text, type JSX } from "@/theme";
+import { Previous } from "@/theme/icons";
 import { CreateUser, UsersCount, UsersTable } from "@/users";
-import { ChevronLeft } from "lucide-react";
-import { useCallback } from "react";
+import { useLocation, useCallback } from "@/utils";
 
 export function UsersScreen(): JSX.Element {
   const [, navigate] = useLocation();
@@ -9,7 +9,7 @@ export function UsersScreen(): JSX.Element {
 
   return (
     <Box align="start" pad="medium" fill>
-      <Button icon={<ChevronLeft size="16px" />} onClick={onBack} />
+      <Button icon={<Previous />} onClick={onBack} />
       <Box justify="center" align="center" fill>
         <Card
           pad="medium"

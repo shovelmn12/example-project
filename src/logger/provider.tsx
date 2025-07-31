@@ -1,3 +1,5 @@
+import { type JSX } from "@/theme";
+
 import { LoggerContext, type Logger } from "./context";
 
 export function LoggerProvider({
