@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { generate, type ThemeType } from "grommet";
-import type { ExtendProps } from "grommet/themes/base";
-import { deepMerge } from "grommet/utils";
+import { type ExtendProps } from "grommet/themes/base";
+
+import { deepMerge } from "@/utils";
 
 export { grommet } from "grommet/themes";
 export * from "grommet-theme-hpe";
