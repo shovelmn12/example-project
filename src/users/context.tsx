@@ -1,4 +1,5 @@
-import { createContext, EMPTY, type Bloc } from "@/utils";
+import { createContext } from "@/utils";
+import { EMPTY, type Bloc } from "@/bloc";
 
 import { type UsersEvent, type User } from "./models";
 

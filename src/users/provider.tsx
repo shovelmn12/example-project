@@ -1,13 +1,13 @@
+import { useMemo, generateUserID } from "@/utils";
 import {
   useCreateBloc,
-  useMemo,
-  generateUserID,
   type CreateBlocProps,
   type EventHandlersObject,
-} from "@/utils";
+} from "@/bloc";
+import { type EventsEmitter, useEventsBus } from "@/events";
+
 import { type UsersEvent, type User } from "./models";
 import { UsersContext } from "./context";
-import { type EventsEmitter, useEventsBus } from "@/events";
 
 function createHandlers(
   bus: EventsEmitter

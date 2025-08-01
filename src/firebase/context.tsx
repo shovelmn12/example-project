@@ -1,5 +1,6 @@
 import { type FirebaseEvent, type FirebaseState } from "@/firebase";
-import { createContext, EMPTY, type Bloc } from "@/utils";
+import { createContext } from "@/utils";
+import { EMPTY, type Bloc } from "@/bloc";
 
 export type FirebaseBloc = Bloc<FirebaseEvent, FirebaseState>;
 

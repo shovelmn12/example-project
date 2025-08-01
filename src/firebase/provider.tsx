@@ -1,11 +1,11 @@
 import { initializeApp } from "firebase/app";
 
+import { useMemo } from "@/utils";
 import {
   useCreateBloc,
-  useMemo,
   type CreateBlocProps,
   type EventHandlersObject,
-} from "@/utils";
+} from "@/bloc";
 import { type EventsEmitter, useEventsBus } from "@/events";
 
 import { FirebaseContext } from "./context";
