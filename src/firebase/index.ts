@@ -1,3 +1,4 @@
+export { type FirebaseApp } from "firebase/app";
 export * from "./provider";
 export * from "./sync";
 export * from "./models";
