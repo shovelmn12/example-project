@@ -1,4 +1,6 @@
+import type { Option } from "@/utils";
+
 export interface AuthData {
-  readonly id: string;
-  readonly token: string;
+  readonly unsubscribe: () => void;
+  readonly token: Option<string>;
 }

@@ -1,8 +1,9 @@
+import { type JSX } from "@/theme";
 import { UsersSync } from "@/users";
 import { FirebaseSync } from "@/firebase";
-import { type JSX } from "@/theme";
 import { useEventsBus } from "@/events";
 import { useEffect } from "@/utils";
+import { AuthSync } from "@/authentication";
 
 export function AppSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
@@ -22,7 +23,9 @@ export function Syncs({ children }: React.PropsWithChildren): JSX.Element {
   return (
     <AppSync>
       <FirebaseSync>
-        <UsersSync>{children}</UsersSync>
+        <AuthSync>
+          <UsersSync>{children}</UsersSync>
+        </AuthSync>
       </FirebaseSync>
     </AppSync>
   );

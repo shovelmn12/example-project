@@ -5,13 +5,14 @@ import {
   type EventHandlersObject,
 } from "@/bloc";
 import { type EventsEmitter, useEventsBus } from "@/events";
-import { Spinner } from "@/theme";
 import { useFirebaseApp, type FirebaseApp } from "@/firebase";
 
 import { type AuthEvent, AuthContext, type AuthState } from "..";
 
 import { onLogin } from "./login";
 import { onLogout } from "./logout";
+import { onLoggedIn } from "./logged_in";
+import { onLoggedOut } from "./logged_out";
 
 function createHandlers(
   bus: EventsEmitter,
@@ -20,6 +21,8 @@ function createHandlers(
   return {
     login: (event, context) => onLogin(event, context, { firebase, bus }),
     logout: (event, context) => onLogout(event, context, { firebase, bus }),
+    logged_in: (event, context) => onLoggedIn(event, context, { bus }),
+    logged_out: (event, context) => onLoggedOut(event, context, { bus }),
   };
 }
 
@@ -27,10 +30,14 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
   const option = useFirebaseApp();
 
   if (option._tag === "None") {
-    return <Spinner />;
+    return children;
   }
 
-  return <Provider firebase={option.value}>{children}</Provider>;
+  return (
+    <Provider key="auth" firebase={option.value}>
+      {children}
+    </Provider>
+  );
 }
 
 function Provider({

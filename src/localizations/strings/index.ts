@@ -1,6 +1,14 @@
 import en from "./en";
 
 export type Strings = {
+  readonly auth: {
+    readonly actions: {
+      readonly google: {
+        readonly login: string;
+        readonly signup: string;
+      };
+    };
+  };
   readonly home: {
     readonly actions: {
       readonly go_to_users: string;
