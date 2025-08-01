@@ -4,4 +4,4 @@ export { useLocation } from "wouter";
 export * from "./react";
 export * from "./grommet";
 export { randomBool } from "fp-ts/lib/Random";
-export * from "fp-ts/lib/Option";
+export { type Option, some, none } from "fp-ts/lib/Option";
