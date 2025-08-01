@@ -1,12 +1,12 @@
 import { useCallback } from "@/utils";
-import { useBlocSelectState } from "@/bloc";
+import { State, useBlocSelectState } from "@/bloc";
 
-import { UsersContext } from "../context";
-import { type User } from "../models";
+import { UsersContext, type UsersState } from "../context";
+import { type User, type UsersError } from "../models";
 
-export function useUsersList(): User[] {
+export function useUsersList(): State<User, UsersError>[] {
   return useBlocSelectState(
     UsersContext,
-    useCallback((state: Record<string, User>) => Object.values(state), [])
+    useCallback((state: UsersState) => Object.values(state), [])
   );
 }

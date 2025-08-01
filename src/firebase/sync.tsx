@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
+import { type AppEvent } from "@/app";
 
 import { useFirebaseBloc } from "./hooks";
 
@@ -7,8 +8,8 @@ export function FirebaseSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useFirebaseBloc();
   const onInit = useCallback(
-    (event: string) => {
-      if (event === "init") {
+    (event: AppEvent) => {
+      if (event.type === "init") {
         bus.emit("firebase", { type: "init" });
       }
     },

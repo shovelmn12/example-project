@@ -18,14 +18,19 @@ export function UsersTable(): JSX.Element {
   const users = useUsersList();
   const data = useMemo(
     () =>
-      users.map((user) => ({
-        ...user,
-        actions: (
-          <Button
-            icon={<Trash />}
-            onClick={() => bus.emit("users", { type: "delete", id: user.id })}
-          />
-        ),
+      users.map((state) => ({
+        ...state,
+        actions:
+          state.type === "data" ? (
+            <Button
+              icon={<Trash />}
+              onClick={() =>
+                bus.emit("users", { type: "delete", id: state.value.id })
+              }
+            />
+          ) : (
+            <Button icon={<Trash />} disabled />
+          ),
       })),
     [users, bus]
   );
@@ -35,18 +40,18 @@ export function UsersTable(): JSX.Element {
   return (
     <Data data={data} gap="medium">
       <Toolbar>
-        <DataTableColumns options={["id", "email"]} drop />
+        <DataTableColumns options={["value.id", "value.email"]} drop />
       </Toolbar>
       <DataTable
         columns={[
           {
-            property: "id",
+            property: "value.id",
             header: strings.users.fields.id,
             sortable: true,
             search: true,
           },
           {
-            property: "email",
+            property: "value.email",
             header: strings.users.fields.email,
             sortable: true,
             search: true,

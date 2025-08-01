@@ -1,9 +1,11 @@
 import { createContext } from "@/utils";
-import { EMPTY, type Bloc } from "@/bloc";
+import { EMPTY, State, type Bloc } from "@/bloc";
 
-import { type UsersEvent, type User } from "./models";
+import { type UsersEvent, type UsersError, type User } from "./models";
 
-export type UsersBloc = Bloc<UsersEvent, Record<string, User>>;
+export type UsersState = Record<string, State<User, UsersError>>;
+
+export type UsersBloc = Bloc<UsersEvent, UsersState>;
 
 export const UsersContext = createContext<UsersBloc>({
   ...EMPTY,

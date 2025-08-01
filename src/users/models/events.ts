@@ -1,4 +1,7 @@
-import type { User } from "./user";
+import { type State } from "@/bloc";
+
+import { type User } from "./user";
+import { type UsersError } from "./errors";
 
 export type UsersEvent =
   | CreateUserEvent
@@ -17,10 +20,10 @@ export interface DeleteUserEvent {
 
 export interface CreatedUserEvent {
   readonly type: "created";
-  readonly user: User;
+  readonly user: State<User, UsersError>;
 }
 
 export interface DeletedUserEvent {
   readonly type: "deleted";
-  readonly user: User;
+  readonly user: State<User, UsersError>;
 }

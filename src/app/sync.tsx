@@ -7,7 +7,13 @@ import { useEffect } from "@/utils";
 export function AppSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
 
-  useEffect(() => bus.emit("app", "init"), [bus]);
+  useEffect(
+    () =>
+      bus.emit("app", {
+        type: "init",
+      }),
+    [bus]
+  );
 
   return <>{children}</>;
 }
