@@ -1,9 +1,24 @@
 import { LogoutButton } from "@/authentication";
-import { Header as GHeader, type JSX } from "@/theme";
+import { Button, Header as GHeader, Box, type JSX } from "@/theme";
+import { Previous } from "@/theme/icons";
+import { useCallback, useLocation } from "@/utils";
 
 export function Header(): JSX.Element {
+  const [path, navigate] = useLocation();
+  const onBack = useCallback(() => navigate(".."), [navigate]);
+  const isHome = path === "/";
+
   return (
-    <GHeader justify="end" pad="xsmall">
+    <GHeader
+      justify={isHome ? "end" : "between"}
+      pad="xsmall"
+      animation="fadeIn"
+    >
+      {!isHome && (
+        <Box animation="fadeIn">
+          <Button icon={<Previous />} onClick={onBack} />
+        </Box>
+      )}
       <LogoutButton />
     </GHeader>
   );

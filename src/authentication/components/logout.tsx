@@ -1,6 +1,6 @@
 import { useEventsBus } from "@/events";
 import { Button, type JSX } from "@/theme";
-import { Logout } from "grommet-icons";
+import { Logout } from "@/theme/icons";
 
 export function LogoutButton(): JSX.Element {
   const bus = useEventsBus();

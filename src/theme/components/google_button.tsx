@@ -1,7 +1,8 @@
+import { default as GButton } from "react-google-button";
+
 import { useEventsBus } from "@/events";
 import { useStrings } from "@/localizations";
 import { type JSX } from "@/theme";
-import { default as GButton } from "react-google-button";
 
 export interface GoogleButtonProps {
   readonly type?: "dark" | "light";
