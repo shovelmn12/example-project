@@ -1,10 +1,7 @@
-import { useStrings } from "@/localizations";
+import { ProfileNameComponent } from "@/profiles";
 import { Box, Card, Text, type JSX } from "@/theme";
-import { CreateProfile, ProfilesCount, ProfilesTable } from "@/profiles";
 
 export function ProfileScreen(): JSX.Element {
-  const strings = useStrings();
-
   return (
     <Box justify="center" align="center" fill>
       <Card
@@ -16,11 +13,9 @@ export function ProfileScreen(): JSX.Element {
         height={{ min: "small" }}
         overflow="auto"
       >
-        <CreateProfile />
-        <Text size="xsmall">
-          {strings.profiles.count}: <ProfilesCount />
+        <Text>
+          <ProfileNameComponent />
         </Text>
-        <ProfilesTable />
       </Card>
     </Box>
   );

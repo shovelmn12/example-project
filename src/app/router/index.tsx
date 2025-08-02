@@ -34,12 +34,10 @@ export function Router(): JSX.Element {
     <Box fill>
       <Header />
       <WSwitch>
-        <Route path="/profiles">
-          <Box animation="fadeIn" fill>
-            <ProfilesRouter />
-          </Box>
+        <Route path="/profiles/*?">
+          <ProfilesRouter />
         </Route>
-        <Route>
+        <Route path="/">
           <Box animation="fadeIn" fill>
             <HomeScreen />
           </Box>

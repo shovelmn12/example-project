@@ -1,7 +1,7 @@
 import { type BlocContext } from "@/bloc";
 import { type EventsEmitter } from "@/events";
 
-import { type ProfileState, type UpdateProfileEvent } from "../..";
+import { type ProfilesState, type UpdateProfileEvent } from "..";
 
 export interface UpdateUtils {
   readonly bus: EventsEmitter;
@@ -9,9 +9,11 @@ export interface UpdateUtils {
 
 export function onUpdate(
   event: UpdateProfileEvent,
-  { value: state, update }: BlocContext<ProfileState>,
+  { value, update }: BlocContext<ProfilesState>,
   { bus }: UpdateUtils
 ): void {
+  const state = value[event.profile.id];
+
   if (state.type === "init") {
     return;
   } else if (state.type === "data") {
@@ -20,23 +22,29 @@ export function onUpdate(
       ...event.profile,
     };
 
-    update({
-      type: "data",
-      value: next,
-    });
+    update((state) => ({
+      ...state,
+      [next.id]: {
+        type: "data",
+        value: next,
+      },
+    }));
 
-    bus.emit("profile", { type: "updated", profile: next });
+    bus.emit("profiles", { type: "updated", profile: next });
   } else if (state.value._tag === "Some") {
     const next = {
       ...state.value.value,
       ...event.profile,
     };
 
-    update({
-      type: "data",
-      value: next,
-    });
+    update((state) => ({
+      ...state,
+      [next.id]: {
+        type: "data",
+        value: next,
+      },
+    }));
 
-    bus.emit("profile", { type: "updated", profile: next });
+    bus.emit("profiles", { type: "updated", profile: next });
   }
 }

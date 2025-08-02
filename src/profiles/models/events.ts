@@ -5,9 +5,11 @@ import { type ProfilesError } from "./errors";
 
 export type ProfilesEvent =
   | CreateProfileEvent
-  | DeleteProfileEvent
   | CreatedProfileEvent
-  | DeletedProfileEvent;
+  | DeleteProfileEvent
+  | DeletedProfileEvent
+  | UpdateProfileEvent
+  | UpdatedProfileEvent;
 
 export interface CreateProfileEvent {
   readonly type: "create";
@@ -26,4 +28,14 @@ export interface CreatedProfileEvent {
 export interface DeletedProfileEvent {
   readonly type: "deleted";
   readonly profile: State<Profile, ProfilesError>;
+}
+
+export interface UpdateProfileEvent {
+  readonly type: "update";
+  readonly profile: Profile;
+}
+
+export interface UpdatedProfileEvent {
+  readonly type: "updated";
+  readonly profile: Profile;
 }

@@ -10,6 +10,7 @@ import { type ProfilesEvent, ProfilesContext, type ProfilesState } from "..";
 
 import { onCreate } from "./create";
 import { onDelete } from "./delete";
+import { onUpdate } from "./update";
 
 function createHandlers(
   bus: EventsEmitter
@@ -17,8 +18,10 @@ function createHandlers(
   return {
     create: (event, context) => onCreate(event, context, { bus }),
     delete: (event, context) => onDelete(event, context, { bus }),
+    update: (event, context) => onUpdate(event, context, { bus }),
     created: () => {},
     deleted: () => {},
+    updated: () => {},
   };
 }
 
@@ -31,5 +34,7 @@ export function ProfilesProvider({ children }: React.PropsWithChildren) {
     )
   );
 
-  return <ProfilesContext.Provider value={bloc}>{children}</ProfilesContext.Provider>;
+  return (
+    <ProfilesContext.Provider value={bloc}>{children}</ProfilesContext.Provider>
+  );
 }

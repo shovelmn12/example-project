@@ -13,7 +13,7 @@ import { Trash } from "@/theme/icons";
 import { useStrings } from "@/localizations";
 import { useCallback, useLocation, useMemo } from "@/utils";
 
-import { useProfilesList, type Profile } from "..";
+import { useProfilesList, type ProfileState } from "..";
 
 export function ProfilesTable(): JSX.Element {
   const [, navigate] = useLocation();
@@ -39,8 +39,22 @@ export function ProfilesTable(): JSX.Element {
     [profiles, bus]
   );
   const onRowClick = useCallback(
-    (event: MouseClick<Profile> | KeyPress<Profile>) =>
-      navigate(`/profiles/${event.datum.id}`, { replace: true }),
+    (event: MouseClick<ProfileState> | KeyPress<ProfileState>) => {
+      const state = event.datum;
+
+      switch (state.type) {
+        case "data":
+          navigate(`~/profiles/${state.value.id}`);
+          break;
+
+        case "error":
+        case "loading":
+          if (state.value._tag === "Some") {
+            navigate(`~/profiles/${state.value.value.id}`);
+          }
+          break;
+      }
+    },
     [navigate]
   );
 
