@@ -5,14 +5,18 @@ import {
   DataTableColumns,
   Toolbar,
   type JSX,
+  type MouseClick,
+  type KeyPress,
 } from "@/theme";
-import { useProfilesList } from "../hooks";
-import { useMemo } from "react";
 import { useEventsBus } from "@/events";
-import { Trash } from "grommet-icons";
+import { Trash } from "@/theme/icons";
 import { useStrings } from "@/localizations";
+import { useCallback, useLocation, useMemo } from "@/utils";
+
+import { useProfilesList, type Profile } from "..";
 
 export function ProfilesTable(): JSX.Element {
+  const [, navigate] = useLocation();
   const bus = useEventsBus();
   const strings = useStrings();
   const profiles = useProfilesList();
@@ -34,6 +38,11 @@ export function ProfilesTable(): JSX.Element {
       })),
     [profiles, bus]
   );
+  const onRowClick = useCallback(
+    (event: MouseClick<Profile> | KeyPress<Profile>) =>
+      navigate(`/profiles/${event.datum.id}`, { replace: true }),
+    [navigate]
+  );
 
   bus.emit("renders", "ProfilesTable");
 
@@ -46,6 +55,7 @@ export function ProfilesTable(): JSX.Element {
         />
       </Toolbar>
       <DataTable
+        onClickRow={onRowClick}
         columns={[
           {
             property: "value.id",
