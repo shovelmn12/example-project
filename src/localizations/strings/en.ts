@@ -11,17 +11,20 @@ const en: Strings = {
   },
   home: {
     actions: {
-      go_to_users: "Users",
+      go_to_profiles: "Profiles",
     },
   },
-  users: {
-    count: "User count",
+  profiles: {
+    count: "Profile count",
     fields: {
       id: "ID",
-      email: "EMAIL",
+      name: {
+        first: "FIRST NAME",
+        last: "LAST NAME",
+      },
     },
     actions: {
-      create: "Create User",
+      create: "Create Profile",
     },
   },
 };

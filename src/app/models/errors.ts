@@ -1,12 +1,12 @@
 import { type AuthError } from "@/authentication";
 import { type FirebaseError } from "@/firebase";
-import { type UsersError } from "@/users";
+import { type ProfilesError } from "@/profiles";
 
-export type AppError = UsersAppError | AuthAppError | FirebaseAppError;
+export type AppError = ProfilesAppError | AuthAppError | FirebaseAppError;
 
-export interface UsersAppError {
-  readonly source: "users";
-  readonly error: UsersError;
+export interface ProfilesAppError {
+  readonly source: "profiles";
+  readonly error: ProfilesError;
 }
 
 export interface AuthAppError {
