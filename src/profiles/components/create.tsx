@@ -4,17 +4,17 @@ import { useCallback } from "@/utils";
 import { AddCircle } from "grommet-icons";
 import { useStrings } from "@/localizations";
 
-export function CreateUser(): JSX.Element {
+export function CreateProfile(): JSX.Element {
   const bus = useEventsBus();
   const strings = useStrings();
 
-  bus.emit("renders", "CreateUser");
+  bus.emit("renders", "CreateProfile");
 
   return (
     <Button
-      onClick={useCallback(() => bus.emit("users", { type: "create" }), [bus])}
+      onClick={useCallback(() => bus.emit("profiles", { type: "create" }), [bus])}
       icon={<AddCircle />}
-      label={strings.users.actions.create}
+      label={strings.profiles.actions.create}
     />
   );
 }

@@ -1,5 +1,5 @@
 import { type JSX } from "@/theme";
-import { UsersSync } from "@/users";
+import { ProfilesSync } from "@/profiles";
 import { FirebaseSync } from "@/firebase";
 import { useEventsBus } from "@/events";
 import { useEffect } from "@/utils";
@@ -24,7 +24,7 @@ export function Syncs({ children }: React.PropsWithChildren): JSX.Element {
     <AppSync>
       <FirebaseSync>
         <AuthSync>
-          <UsersSync>{children}</UsersSync>
+          <ProfilesSync>{children}</ProfilesSync>
         </AuthSync>
       </FirebaseSync>
     </AppSync>

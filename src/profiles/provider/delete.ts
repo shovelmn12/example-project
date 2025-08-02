@@ -1,20 +1,20 @@
 import { type BlocContext } from "@/bloc";
 import { type EventsEmitter } from "@/events";
 
-import { type DeleteUserEvent, type UsersState } from "..";
+import { type DeleteProfileEvent, type ProfilesState } from "..";
 
 export interface DeleteUtils {
   readonly bus: EventsEmitter;
 }
 
 export function onDelete(
-  event: DeleteUserEvent,
-  { value, update }: BlocContext<UsersState>,
+  event: DeleteProfileEvent,
+  { value, update }: BlocContext<ProfilesState>,
   { bus }: DeleteUtils
 ): void {
-  const user = value[event.id];
+  const profile = value[event.id];
 
-  update((state: UsersState) => {
+  update((state: ProfilesState) => {
     const next = {
       ...state,
     };
@@ -24,5 +24,5 @@ export function onDelete(
     return next;
   });
 
-  bus.emit("users", { type: "deleted", user });
+  bus.emit("profiles", { type: "deleted", profile });
 }

@@ -11,13 +11,16 @@ export type Strings = {
   };
   readonly home: {
     readonly actions: {
-      readonly go_to_users: string;
+      readonly go_to_profiles: string;
     };
   };
-  readonly users: {
+  readonly profiles: {
     readonly fields: {
       readonly id: string;
-      readonly email: string;
+      readonly name: {
+        readonly first: string;
+        readonly last: string;
+      };
     };
     readonly count: string;
     readonly actions: {

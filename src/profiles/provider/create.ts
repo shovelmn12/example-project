@@ -1,38 +1,41 @@
 import { type BlocContext, type DataState } from "@/bloc";
 import { type EventsEmitter } from "@/events";
-import { generateUserID, randomBool } from "@/utils";
+import { generateProfileID, randomBool } from "@/utils";
 
-import { type CreateUserEvent, type User, type UsersState } from "..";
+import { type CreateProfileEvent, type Profile, type ProfilesState } from "..";
 
 export interface CreateUtils {
   readonly bus: EventsEmitter;
 }
 
 export function onCreate(
-  _: CreateUserEvent,
-  { update }: BlocContext<UsersState>,
+  _: CreateProfileEvent,
+  { update }: BlocContext<ProfilesState>,
   { bus }: CreateUtils
 ): void {
-  const user: DataState<User> = {
+  const profile: DataState<Profile> = {
     type: "data",
     value: {
-      id: generateUserID(),
-      email: "test@test.com",
+      id: generateProfileID(),
+      name: {
+        first: "Test",
+        last: "Testing",
+      },
     },
   };
 
   if (randomBool()) {
-    update((state: UsersState) => ({
+    update((state: ProfilesState) => ({
       ...state,
-      [user.value.id]: user,
+      [profile.value.id]: profile,
     }));
 
-    bus.emit("users", { type: "created", user });
+    bus.emit("profiles", { type: "created", profile });
   } else {
     bus.emit("app", {
       type: "error",
       error: {
-        source: "users",
+        source: "profiles",
         error: {
           type: "unknown",
           error: "Some unknown error",
