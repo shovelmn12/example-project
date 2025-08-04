@@ -1,4 +1,4 @@
-import { useMemo } from "@/utils";
+import { useMemo, memo } from "@/utils";
 import { map } from "@/utils/rx";
 import { useCreateBloc, type CreatePipeBlocProps } from "@/bloc";
 
@@ -13,7 +13,7 @@ export interface ProfileProviderProps {
   readonly id: string;
 }
 
-export function ProfileProvider({
+function Provider({
   children,
   id,
 }: React.PropsWithChildren<ProfileProviderProps>) {
@@ -34,3 +34,5 @@ export function ProfileProvider({
     <ProfileContext.Provider value={bloc}>{children}</ProfileContext.Provider>
   );
 }
+
+export const ProfileProvider = memo(Provider);

@@ -4,10 +4,13 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({ plugins: [["@swc/plugin-styled-components", {}]] })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+  },
+  server: {
+    port: 5000,
   },
 });

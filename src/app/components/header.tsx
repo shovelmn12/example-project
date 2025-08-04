@@ -4,8 +4,8 @@ import { Previous } from "@/theme/icons";
 import { useCallback, useLocation } from "@/utils";
 
 export function Header(): JSX.Element {
-  const [path, navigate] = useLocation();
-  const onBack = useCallback(() => navigate(".."), [navigate]);
+  const [path] = useLocation();
+  const onBack = useCallback(() => window.history.back(), []);
   const isHome = path === "/";
 
   return (
