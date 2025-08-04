@@ -4,7 +4,14 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react({ plugins: [["@swc/plugin-styled-components", {}]] })],
+  plugins: [
+    react({
+      plugins: [
+        ["babel-plugin-react-compiler", {}],
+        ["@swc/plugin-styled-components", {}],
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
