@@ -7,36 +7,33 @@ import {
   type JSX,
   type MouseClick,
   type KeyPress,
+  Text,
 } from "@/theme";
 import { useEventsBus } from "@/events";
 import { Trash } from "@/theme/icons";
 import { useStrings } from "@/localizations";
 import { useCallback, useLocation, useMemo } from "@/utils";
 
-import { useProfilesList, type ProfileState } from "..";
+import {
+  ProfileIDComponent,
+  ProfileFirstNameComponent,
+  ProfileLastNameComponent,
+  ProfileProvider,
+  useProfilesIDs,
+  type ProfileState,
+} from "..";
 
 export function ProfilesTable(): JSX.Element {
   const [, navigate] = useLocation();
   const bus = useEventsBus();
   const strings = useStrings();
-  const profiles = useProfilesList();
+  const ids = useProfilesIDs();
   const data = useMemo(
     () =>
-      profiles.map((state) => ({
-        ...state,
-        actions:
-          state.type === "data" ? (
-            <Button
-              icon={<Trash />}
-              onClick={() =>
-                bus.emit("profiles", { type: "delete", id: state.value.id })
-              }
-            />
-          ) : (
-            <Button icon={<Trash />} disabled />
-          ),
+      ids.map((id) => ({
+        id,
       })),
-    [profiles, bus]
+    [ids]
   );
   const onRowClick = useCallback(
     (event: MouseClick<ProfileState> | KeyPress<ProfileState>) => {
@@ -76,22 +73,60 @@ export function ProfilesTable(): JSX.Element {
             header: strings.profiles.fields.id,
             sortable: true,
             search: true,
+            primary: true,
+            render(data: { id: string }) {
+              return (
+                <ProfileProvider id={data.id}>
+                  <Text>
+                    <ProfileIDComponent />
+                  </Text>
+                </ProfileProvider>
+              );
+            },
           },
           {
             property: "value.name.first",
             header: strings.profiles.fields.name.first,
             sortable: true,
             search: true,
+            render(data: { id: string }) {
+              return (
+                <ProfileProvider id={data.id}>
+                  <Text>
+                    <ProfileFirstNameComponent />
+                  </Text>
+                </ProfileProvider>
+              );
+            },
           },
           {
             property: "value.name.last",
             header: strings.profiles.fields.name.last,
             sortable: true,
             search: true,
+            render(data: { id: string }) {
+              return (
+                <ProfileProvider id={data.id}>
+                  <Text>
+                    <ProfileLastNameComponent />
+                  </Text>
+                </ProfileProvider>
+              );
+            },
           },
           {
             property: "actions",
             header: "",
+            render(data: { id: string }) {
+              return (
+                <Button
+                  icon={<Trash />}
+                  onClick={() =>
+                    bus.emit("profiles", { type: "delete", id: data.id })
+                  }
+                />
+              );
+            },
           },
         ]}
         resizeable
