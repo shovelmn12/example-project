@@ -7,6 +7,7 @@ export {
   use as useContext,
   useMemo,
   lazy,
+  memo,
 } from "react";
 
 export function render(

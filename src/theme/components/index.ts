@@ -11,8 +11,10 @@ export {
   Grommet,
   Card,
   Header,
+  type MouseClick,
+  type KeyPress,
 } from "grommet";
-export { Switch as WSwitch, Route } from "wouter";
+export { Switch as WSwitch, Route, Router } from "wouter";
 export { StrictMode, type JSX, Suspense } from "react";
 export * from "./data_table";
 export * from "./google_button";
