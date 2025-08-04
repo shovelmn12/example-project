@@ -20,15 +20,18 @@ import {
   ProfileLastNameComponent,
   ProfileProvider,
   useProfilesIDs,
-  type ProfileState,
 } from "..";
+
+interface ID {
+  readonly id: string;
+}
 
 export function ProfilesTable(): JSX.Element {
   const [, navigate] = useLocation();
   const bus = useEventsBus();
   const strings = useStrings();
   const ids = useProfilesIDs();
-  const data = useMemo(
+  const data: ID[] = useMemo(
     () =>
       ids.map((id) => ({
         id,
@@ -36,22 +39,8 @@ export function ProfilesTable(): JSX.Element {
     [ids]
   );
   const onRowClick = useCallback(
-    (event: MouseClick<ProfileState> | KeyPress<ProfileState>) => {
-      const state = event.datum;
-
-      switch (state.type) {
-        case "data":
-          navigate(`~/profiles/${state.value.id}`);
-          break;
-
-        case "error":
-        case "loading":
-          if (state.value._tag === "Some") {
-            navigate(`~/profiles/${state.value.value.id}`);
-          }
-          break;
-      }
-    },
+    (event: MouseClick<ID> | KeyPress<ID>) =>
+      navigate(`~/profiles/${event.datum.id}`),
     [navigate]
   );
 
@@ -74,7 +63,7 @@ export function ProfilesTable(): JSX.Element {
             sortable: true,
             search: true,
             primary: true,
-            render(data: { id: string }) {
+            render(data: ID) {
               return (
                 <ProfileProvider id={data.id}>
                   <Text>
@@ -89,7 +78,7 @@ export function ProfilesTable(): JSX.Element {
             header: strings.profiles.fields.name.first,
             sortable: true,
             search: true,
-            render(data: { id: string }) {
+            render(data: ID) {
               return (
                 <ProfileProvider id={data.id}>
                   <Text>
@@ -104,7 +93,7 @@ export function ProfilesTable(): JSX.Element {
             header: strings.profiles.fields.name.last,
             sortable: true,
             search: true,
-            render(data: { id: string }) {
+            render(data: ID) {
               return (
                 <ProfileProvider id={data.id}>
                   <Text>
@@ -117,7 +106,7 @@ export function ProfilesTable(): JSX.Element {
           {
             property: "actions",
             header: "",
-            render(data: { id: string }) {
+            render(data: ID) {
               return (
                 <Button
                   icon={<Trash />}
