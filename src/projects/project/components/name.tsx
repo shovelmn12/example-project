@@ -1,6 +1,6 @@
 import { type JSX } from "@/theme";
 
-import { useProjectName } from "../hooks";
+import { useProjectName } from "..";
 
 export function ProjectNameComponent(): JSX.Element {
   const name = useProjectName();

@@ -17,10 +17,8 @@ export function onCreate(
     type: "data",
     value: {
       id: generateProjectID(),
-      name: {
-        first: "Test",
-        last: "Testing",
-      },
+      name: "test",
+      description: "Some description",
     },
   };
 

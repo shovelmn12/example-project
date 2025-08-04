@@ -11,6 +11,10 @@ export {
   Grommet,
   Card,
   Header,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Grid,
   type MouseClick,
   type KeyPress,
 } from "grommet";

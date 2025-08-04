@@ -27,6 +27,16 @@ export type Strings = {
       readonly create: string;
     };
   };
+  readonly projects: {
+    readonly fields: {
+      readonly id: string;
+      readonly name: string;
+      readonly description: string;
+    };
+    readonly actions: {
+      readonly create: string;
+    };
+  };
 };
 
 export default { en };

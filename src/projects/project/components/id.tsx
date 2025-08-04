@@ -1,6 +1,6 @@
 import { type JSX } from "@/theme";
 
-import { useProjectID } from "../hooks";
+import { useProjectID } from "..";
 
 export function ProjectIDComponent(): JSX.Element {
   const id = useProjectID();

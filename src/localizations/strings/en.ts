@@ -27,6 +27,16 @@ const en: Strings = {
       create: "Create Profile",
     },
   },
+  projects: {
+    fields: {
+      id: "ID",
+      name: "NAME",
+      description: "DESCRIPTION",
+    },
+    actions: {
+      create: "Create Profile",
+    },
+  },
 };
 
 export default en;
