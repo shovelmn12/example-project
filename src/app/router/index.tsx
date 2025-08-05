@@ -13,6 +13,9 @@ const HomeScreen = lazy(async () => ({
 const ProfilesRouter = lazy(async () => ({
   default: (await import("./profiles")).ProfilesRouter,
 }));
+const ProjectsRouter = lazy(async () => ({
+  default: (await import("./projects")).ProjectsRouter,
+}));
 
 export function Router(): JSX.Element {
   const isInit = useIsAppInit();
@@ -37,7 +40,10 @@ export function Router(): JSX.Element {
         <Route path="/profiles/*?">
           <ProfilesRouter />
         </Route>
-        <Route path="/">
+        <Route path="/projects/*?">
+          <ProjectsRouter />
+        </Route>
+        <Route>
           <Box animation="fadeIn" fill>
             <HomeScreen />
           </Box>

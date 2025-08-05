@@ -44,8 +44,6 @@ export function ProfilesTable(): JSX.Element {
     [navigate]
   );
 
-  bus.emit("renders", "ProfilesTable");
-
   return (
     <Data data={data} gap="medium">
       <Toolbar>

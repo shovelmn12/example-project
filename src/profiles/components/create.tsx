@@ -8,11 +8,12 @@ export function CreateProfile(): JSX.Element {
   const bus = useEventsBus();
   const strings = useStrings();
 
-  bus.emit("renders", "CreateProfile");
-
   return (
     <Button
-      onClick={useCallback(() => bus.emit("profiles", { type: "create" }), [bus])}
+      onClick={useCallback(
+        () => bus.emit("profiles", { type: "create" }),
+        [bus]
+      )}
       icon={<AddCircle />}
       label={strings.profiles.actions.create}
     />

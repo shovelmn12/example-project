@@ -1,7 +1,6 @@
 import { type State } from "@/bloc";
 
-import { type Profile } from "./profile";
-import { type ProfilesError } from "./errors";
+import { type Profile, type ProfilesError } from ".";
 
 export type ProfilesEvent =
   | CreateProfileEvent

@@ -12,6 +12,7 @@ const en: Strings = {
   home: {
     actions: {
       go_to_profiles: "Profiles",
+      go_to_projects: "Projects",
     },
   },
   profiles: {
@@ -25,6 +26,17 @@ const en: Strings = {
     },
     actions: {
       create: "Create Profile",
+    },
+  },
+  projects: {
+    count: "Project count",
+    fields: {
+      id: "ID",
+      name: "NAME",
+      description: "DESCRIPTION",
+    },
+    actions: {
+      create: "Create Project",
     },
   },
 };
