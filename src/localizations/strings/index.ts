@@ -12,6 +12,7 @@ export type Strings = {
   readonly home: {
     readonly actions: {
       readonly go_to_profiles: string;
+      readonly go_to_projects: string;
     };
   };
   readonly profiles: {
@@ -33,6 +34,7 @@ export type Strings = {
       readonly name: string;
       readonly description: string;
     };
+    readonly count: string;
     readonly actions: {
       readonly create: string;
     };

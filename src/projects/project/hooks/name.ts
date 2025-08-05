@@ -1,10 +1,10 @@
 import { useBlocSelectState } from "@/bloc";
-import { type ProjectName, type ProjectState } from "@/projects";
+import { type ProjectState } from "@/projects";
 import { none, some, useCallback, type Option } from "@/utils";
 
 import { ProjectContext } from "..";
 
-export function useProjectName(): Option<ProjectName> {
+export function useProjectName(): Option<string> {
   return useBlocSelectState(
     ProjectContext,
     useCallback((state: ProjectState) => {

@@ -1,7 +1,12 @@
 import { Grid, type JSX } from "@/theme";
 import { useCallback, useLocation, useMemo } from "@/utils";
 
-import { ProjectCard, ProjectProvider, useProjectsIDs } from "..";
+import {
+  CreateProject,
+  ProjectCard,
+  ProjectProvider,
+  useProjectsIDs,
+} from "..";
 
 interface ID {
   readonly id: string;
@@ -26,9 +31,12 @@ export function ProjectsGrid(): JSX.Element {
     <Grid
       columns={{
         count: 4,
-        size: "auto",
+        size: "medium",
       }}
+      rows="small"
+      gap="small"
     >
+      <CreateProject />
       {data.map(({ id }) => (
         <ProjectProvider key={`project-grid-${id}`} id={id}>
           <ProjectCard onClick={createOnClick(id)} />

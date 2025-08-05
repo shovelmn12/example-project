@@ -16,16 +16,29 @@ export interface ProjectCardProps {
 
 export function ProjectCard({ onClick }: ProjectCardProps): JSX.Element {
   return (
-    <Card onClick={onClick}>
-      <CardHeader>
+    <Card onClick={onClick} background="ligh-1">
+      <CardHeader
+        pad={{
+          top: "medium",
+          horizontal: "medium",
+        }}
+      >
         <ProjectNameComponent />
       </CardHeader>
-      <CardBody>
+      <CardBody pad="medium">
         <ProjectDescriptionComponent />
       </CardBody>
-      <CardFooter justify="end" background="light-2">
-        <Button icon={<ShareOption color="plain" />} hoverIndicator />
-        <Button icon={<Trash color="status-critical" />} hoverIndicator />
+      <CardFooter background="light-2">
+        <Button
+          icon={<ShareOption color="plain" />}
+          color="transparent"
+          hoverIndicator
+        />
+        <Button
+          icon={<Trash color="status-critical" />}
+          color="transparent"
+          hoverIndicator
+        />
       </CardFooter>
     </Card>
   );
