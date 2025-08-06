@@ -1,4 +1,4 @@
-import { useMemo } from "@/utils";
+import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
   type CreateBlocProps,
@@ -19,9 +19,9 @@ function createHandlers(
     create: (event, context) => onCreate(event, context, { bus }),
     delete: (event, context) => onDelete(event, context, { bus }),
     update: (event, context) => onUpdate(event, context, { bus }),
-    created: () => {},
-    deleted: () => {},
-    updated: () => {},
+    created: noOp,
+    deleted: noOp,
+    updated: noOp,
   };
 }
 

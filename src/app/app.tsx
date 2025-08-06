@@ -1,6 +1,14 @@
-import { type JSX, Box, Spinner, Suspense } from "@/theme";
+import {
+  type JSX,
+  Box,
+  Grommet,
+  Spinner,
+  Suspense,
+  myTheme as theme,
+} from "@/theme";
 import { lazy } from "@/utils";
 import { useIsFirebaseInitialized } from "@/firebase";
+import { useSettingsThemeMode } from "@/settings";
 
 import { Providers } from "./providers";
 import { Syncs } from "./sync";
@@ -11,11 +19,13 @@ const Router = lazy(async () => ({
 
 export function App(): JSX.Element {
   return (
-    <Wrapper>
-      <Container>
-        <Router />
-      </Container>
-    </Wrapper>
+    <Grommet theme={theme} themeMode={useSettingsThemeMode()} full>
+      <Wrapper>
+        <Container>
+          <Router />
+        </Container>
+      </Wrapper>
+    </Grommet>
   );
 }
 

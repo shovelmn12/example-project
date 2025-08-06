@@ -1,7 +1,4 @@
-export type FirebaseEvent =
-  | InitFirebaseEvent
-  | InitializedFirebaseEvent
-  | ErrorFirebaseEvent;
+export type FirebaseEvent = InitFirebaseEvent | InitializedFirebaseEvent;
 
 export interface InitFirebaseEvent {
   readonly type: "init";
@@ -9,9 +6,4 @@ export interface InitFirebaseEvent {
 
 export interface InitializedFirebaseEvent {
   readonly type: "initialized";
-}
-
-export interface ErrorFirebaseEvent {
-  readonly type: "error";
-  readonly error: unknown;
 }

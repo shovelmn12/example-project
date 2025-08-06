@@ -1,8 +1,7 @@
 import { useBlocSelectState } from "@/bloc";
 import { useCallback } from "@/utils";
 
-import { FirebaseContext } from "../context";
-import type { FirebaseState } from "../models";
+import { FirebaseContext, type FirebaseState } from "..";
 
 export function useIsFirebaseInitialized(): boolean {
   return useBlocSelectState(

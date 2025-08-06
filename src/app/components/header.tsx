@@ -1,4 +1,5 @@
 import { LogoutButton } from "@/authentication";
+import { ThemeSelector } from "@/settings";
 import { Button, Header as GHeader, Box, type JSX } from "@/theme";
 import { Previous } from "@/theme/icons";
 import { useCallback, useLocation } from "@/utils";
@@ -19,7 +20,10 @@ export function Header(): JSX.Element {
           <Button icon={<Previous />} onClick={onBack} />
         </Box>
       )}
-      <LogoutButton />
+      <Box direction="row" gap="small">
+        <ThemeSelector />
+        <LogoutButton />
+      </Box>
     </GHeader>
   );
 }
