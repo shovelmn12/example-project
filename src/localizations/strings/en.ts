@@ -39,6 +39,10 @@ const en: Strings = {
       create: "Create Project",
     },
   },
+  theme: {
+    light: "Light",
+    dark: "Dark",
+  },
 };
 
 export default en;

@@ -39,6 +39,10 @@ export type Strings = {
       readonly create: string;
     };
   };
+  readonly theme: {
+    readonly light: string;
+    readonly dark: string;
+  };
 };
 
 export default { en };

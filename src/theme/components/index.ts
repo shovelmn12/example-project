@@ -16,6 +16,7 @@ export {
   CardFooter,
   Grid,
   Stack,
+  Select,
   type MouseClick,
   type KeyPress,
 } from "grommet";

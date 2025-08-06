@@ -1,5 +1,9 @@
 import { useIsFirebaseInitialized } from "@/firebase";
+import { useIsSettingsInitialized } from "@/settings";
 
 export function useIsAppInit(): boolean {
-  return useIsFirebaseInitialized();
+  const isFirebaseInit = useIsFirebaseInitialized();
+  const isSettingsInit = useIsSettingsInitialized();
+
+  return isFirebaseInit && isSettingsInit;
 }
