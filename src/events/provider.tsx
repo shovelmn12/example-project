@@ -1,7 +1,7 @@
 import { useMemo, mitt } from "@/utils";
 import { type JSX } from "@/theme";
 
-import { EventsBusContext } from "./context";
+import { EventsBusContext } from ".";
 
 export function EventsBusProvider({
   children,
