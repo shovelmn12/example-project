@@ -42,6 +42,7 @@ const en: Strings = {
   theme: {
     light: "Light",
     dark: "Dark",
+    auto: "System",
   },
 };
 

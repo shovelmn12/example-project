@@ -17,7 +17,10 @@ export function onInit(
     update({
       type: "data",
       value: {
-        theme: "light",
+        theme: {
+          mode: "auto",
+          type: "default",
+        },
       },
     });
 

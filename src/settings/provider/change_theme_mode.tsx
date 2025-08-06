@@ -2,14 +2,14 @@ import { type BlocContext } from "@/bloc";
 import { type EventsEmitter } from "@/events";
 import { none } from "@/utils";
 
-import { type SettingsState, type ChangeThemeSettingsEvent } from "..";
+import { type SettingsState, type ChangeThemeModeSettingsEvent } from "..";
 
 export interface ChangeThemeUtils {
   readonly bus: EventsEmitter;
 }
 
-export function onChangeTheme(
-  event: ChangeThemeSettingsEvent,
+export function onChangeThemeMode(
+  event: ChangeThemeModeSettingsEvent,
   { value, update }: BlocContext<SettingsState>,
   { bus }: ChangeThemeUtils
 ): void {
@@ -19,7 +19,17 @@ export function onChangeTheme(
         update({
           type: "data",
           value: {
-            theme: event.theme,
+            theme: {
+              mode: event.mode,
+              type: value.value.theme.type,
+            },
+          },
+        });
+        bus.emit("settings", {
+          type: "changed.theme",
+          theme: {
+            mode: event.mode,
+            type: value.value.theme.type,
           },
         });
         break;
@@ -30,10 +40,19 @@ export function onChangeTheme(
           update({
             type: "data",
             value: {
-              theme: event.theme,
+              theme: {
+                mode: event.mode,
+                type: value.value.value.theme.type,
+              },
             },
           });
-          bus.emit("settings", { type: "changed.theme", theme: event.theme });
+          bus.emit("settings", {
+            type: "changed.theme",
+            theme: {
+              mode: event.mode,
+              type: value.value.value.theme.type,
+            },
+          });
         }
         break;
     }

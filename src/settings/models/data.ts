@@ -1,5 +1,12 @@
 export interface SettingsData {
-  readonly theme: ThemeType;
+  readonly theme: ThemeData;
 }
 
-export type ThemeType = "light" | "dark";
+export interface ThemeData {
+  readonly mode: ThemeMode;
+  readonly type: ThemeType;
+}
+
+export type ThemeMode = "light" | "dark" | "auto";
+
+export type ThemeType = "default";

@@ -42,6 +42,7 @@ export type Strings = {
   readonly theme: {
     readonly light: string;
     readonly dark: string;
+    readonly auto: string;
   };
 };
 

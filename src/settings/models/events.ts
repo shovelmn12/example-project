@@ -1,9 +1,9 @@
-import { type ThemeType } from ".";
+import { type ThemeData, type ThemeMode } from ".";
 
 export type SettingsEvent =
   | InitSettingsEvent
   | InitializedSettingsEvent
-  | ChangeThemeSettingsEvent
+  | ChangeThemeModeSettingsEvent
   | ChangedThemeSettingsEvent;
 
 export interface InitSettingsEvent {
@@ -18,12 +18,12 @@ export interface InitializedSettingsEvent {
   readonly type: "initialized";
 }
 
-export interface ChangeThemeSettingsEvent {
-  readonly type: "change.theme";
-  readonly theme: ThemeType;
+export interface ChangeThemeModeSettingsEvent {
+  readonly type: "change.theme.mode";
+  readonly mode: ThemeMode;
 }
 
 export interface ChangedThemeSettingsEvent {
   readonly type: "changed.theme";
-  readonly theme: ThemeType;
+  readonly theme: ThemeData;
 }

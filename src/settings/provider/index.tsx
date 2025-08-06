@@ -1,4 +1,4 @@
-import { useMemo } from "@/utils";
+import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
   type CreateBlocProps,
@@ -9,13 +9,17 @@ import { type EventsEmitter, useEventsBus } from "@/events";
 import { SettingsContext, type SettingsEvent, type SettingsState } from "..";
 
 import { onInit } from "./init";
+import { onChangeThemeMode } from "./change_theme_mode";
 
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<SettingsEvent, SettingsState> {
   return {
     init: (event, context) => onInit(event, context, { bus }),
-    initialized: () => {},
+    "change.theme.mode": (event, context) =>
+      onChangeThemeMode(event, context, { bus }),
+    initialized: noOp,
+    "changed.theme": noOp,
   };
 }
 

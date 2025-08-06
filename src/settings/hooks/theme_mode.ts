@@ -1,20 +1,20 @@
 import { useBlocSelectState } from "@/bloc";
 import { useCallback } from "@/utils";
 
-import { SettingsContext, type SettingsState, type ThemeType } from "..";
+import { SettingsContext, type SettingsState, type ThemeMode } from "..";
 
-export function useSettingsTheme(): ThemeType {
+export function useSettingsThemeMode(): ThemeMode {
   return useBlocSelectState(
     SettingsContext,
     useCallback((state: SettingsState) => {
       switch (state.type) {
         case "data":
-          return state.value.theme;
+          return state.value.theme.mode;
 
         case "error":
         case "loading":
           if (state.value._tag === "Some") {
-            return state.value.value.theme;
+            return state.value.value.theme.mode;
           }
 
           return "light";

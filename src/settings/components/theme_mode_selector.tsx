@@ -3,10 +3,10 @@ import { type JSX, Select } from "@/theme";
 import { useCallback, useMemo } from "@/utils";
 import { useEventsBus } from "@/events";
 
-import { type ThemeType } from "..";
+import { useSettingsThemeMode, type ThemeMode } from "..";
 
 interface ThemeOption {
-  readonly value: ThemeType;
+  readonly value: ThemeMode;
   readonly name: string;
 }
 
@@ -17,18 +17,34 @@ interface ThemeChangedEvent {
 export function ThemeSelector(): JSX.Element {
   const bus = useEventsBus();
   const strings = useStrings();
+  const theme = useSettingsThemeMode();
   const options = useMemo<ThemeOption[]>(
     () => [
       { value: "light", name: strings.theme.light },
       { value: "dark", name: strings.theme.dark },
+      { value: "auto", name: strings.theme.auto },
     ],
     [strings]
   );
+  const value = useMemo<ThemeOption>(
+    () => options.find(({ value }) => value === theme) ?? options[0]!,
+    [theme, options]
+  );
   const onChange = useCallback(
     (event: ThemeChangedEvent) =>
-      bus.emit("settings", { type: "change.theme", theme: event.option.value }),
+      bus.emit("settings", {
+        type: "change.theme.mode",
+        mode: event.option.value,
+      }),
     [bus]
   );
 
-  return <Select options={options} labelKey="name" onChange={onChange} />;
+  return (
+    <Select
+      value={value}
+      options={options}
+      labelKey="name"
+      onChange={onChange}
+    />
+  );
 }
