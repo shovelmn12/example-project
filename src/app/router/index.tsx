@@ -1,4 +1,4 @@
-import { WSwitch, Route, type JSX, Box, Spinner } from "@/theme";
+import { WSwitch, Route, type JSX, Box, Spinner, Suspense } from "@/theme";
 import { lazy } from "@/utils";
 import { useIsAuth } from "@/authentication";
 
@@ -38,10 +38,26 @@ export function Router(): JSX.Element {
       <Header />
       <WSwitch>
         <Route path="/profiles/*?">
-          <ProfilesRouter />
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <ProfilesRouter />
+          </Suspense>
         </Route>
         <Route path="/projects/*?">
-          <ProjectsRouter />
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <ProjectsRouter />
+          </Suspense>
         </Route>
         <Route>
           <Box animation="fadeIn" fill>
