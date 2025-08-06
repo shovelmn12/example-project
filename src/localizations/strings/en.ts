@@ -1,7 +1,15 @@
 import type { Strings } from ".";
 
 const en: Strings = {
+  header: {
+    actions: {
+      settings: "Settings",
+      logout: "Logout",
+    },
+  },
   auth: {
+    title: "Authentication",
+    options: "Sign in options",
     actions: {
       google: {
         login: "Sign in with Google",

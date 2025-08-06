@@ -20,9 +20,9 @@ export function ThemeSelector(): JSX.Element {
   const theme = useSettingsThemeMode();
   const options = useMemo<ThemeOption[]>(
     () => [
+      { value: "auto", name: strings.theme.auto },
       { value: "light", name: strings.theme.light },
       { value: "dark", name: strings.theme.dark },
-      { value: "auto", name: strings.theme.auto },
     ],
     [strings]
   );

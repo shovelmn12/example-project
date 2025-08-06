@@ -10,6 +10,9 @@ const AuthScreen = lazy(async () => ({
 const HomeScreen = lazy(async () => ({
   default: (await import("./home")).HomeScreen,
 }));
+const SettingsScreen = lazy(async () => ({
+  default: (await import("./settings")).SettingsScreen,
+}));
 const ProfilesRouter = lazy(async () => ({
   default: (await import("./profiles")).ProfilesRouter,
 }));
@@ -57,6 +60,19 @@ export function Router(): JSX.Element {
             }
           >
             <ProjectsRouter />
+          </Suspense>
+        </Route>
+        <Route path="/settings">
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <Box animation="fadeIn" fill>
+              <SettingsScreen />
+            </Box>
           </Suspense>
         </Route>
         <Route>
