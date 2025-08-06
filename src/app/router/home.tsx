@@ -1,5 +1,5 @@
 import { useStrings } from "@/localizations";
-import { Button, type JSX, Card } from "@/theme";
+import { Button, type JSX, Page, PageContent } from "@/theme";
 import { useCallback, useLocation } from "@/utils";
 
 export function HomeScreen(): JSX.Element {
@@ -9,15 +9,17 @@ export function HomeScreen(): JSX.Element {
   const goToProjects = useCallback(() => navigate("/projects"), [navigate]);
 
   return (
-    <Card justify="center" align="center" gap="small" fill>
-      <Button
-        onClick={goToProfiles}
-        label={strings.home.actions.go_to_profiles}
-      />
-      <Button
-        onClick={goToProjects}
-        label={strings.home.actions.go_to_projects}
-      />
-    </Card>
+    <Page fill>
+      <PageContent justify="center" align="center" gap="small" fill>
+        <Button
+          onClick={goToProfiles}
+          label={strings.home.actions.go_to_profiles}
+        />
+        <Button
+          onClick={goToProjects}
+          label={strings.home.actions.go_to_projects}
+        />
+      </PageContent>
+    </Page>
   );
 }

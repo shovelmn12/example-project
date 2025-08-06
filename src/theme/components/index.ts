@@ -17,6 +17,11 @@ export {
   Grid,
   Stack,
   Select,
+  Page,
+  PageHeader,
+  PageContent,
+  Main,
+  Layer,
   type MouseClick,
   type KeyPress,
 } from "grommet";

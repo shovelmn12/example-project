@@ -1,22 +1,14 @@
 import { ProfileNameComponent } from "@/profiles";
-import { Box, Card, Text, type JSX } from "@/theme";
+import { Page, PageContent, Text, type JSX } from "@/theme";
 
 export function ProfileScreen(): JSX.Element {
   return (
-    <Box justify="center" align="center" fill>
-      <Card
-        pad="medium"
-        justify="center"
-        align="center"
-        gap="medium"
-        width={{ min: "medium" }}
-        height={{ min: "small" }}
-        overflow="auto"
-      >
+    <Page>
+      <PageContent justify="center" align="center" fill>
         <Text>
           <ProfileNameComponent />
         </Text>
-      </Card>
-    </Box>
+      </PageContent>
+    </Page>
   );
 }

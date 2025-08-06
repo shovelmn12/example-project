@@ -2,6 +2,7 @@ import {
   type JSX,
   Box,
   Grommet,
+  Main,
   Spinner,
   Suspense,
   myTheme as theme,
@@ -20,11 +21,13 @@ const Router = lazy(async () => ({
 export function App(): JSX.Element {
   return (
     <Grommet theme={theme} themeMode={useSettingsThemeMode()} full>
-      <Wrapper>
-        <Container>
-          <Router />
-        </Container>
-      </Wrapper>
+      <Main fill>
+        <Wrapper>
+          <Container>
+            <Router />
+          </Container>
+        </Wrapper>
+      </Main>
     </Grommet>
   );
 }
