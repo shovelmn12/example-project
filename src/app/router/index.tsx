@@ -60,9 +60,17 @@ export function Router(): JSX.Element {
           </Suspense>
         </Route>
         <Route>
-          <Box animation="fadeIn" fill>
-            <HomeScreen />
-          </Box>
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <Box animation="fadeIn" fill>
+              <HomeScreen />
+            </Box>
+          </Suspense>
         </Route>
       </WSwitch>
     </Box>
