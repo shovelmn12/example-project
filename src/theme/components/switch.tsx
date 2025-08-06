@@ -1,4 +1,4 @@
-import { Box, Button, type JSX, type MenuChildrenProps } from "@/theme";
+import { Box, Button, type JSX } from "@/theme";
 import { useState } from "react";
 
 export function Switch(): JSX.Element {
