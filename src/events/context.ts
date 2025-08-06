@@ -1,5 +1,6 @@
 import { type AppEvent } from "@/app";
 import { type AuthEvent } from "@/authentication";
+import type { ConfigEvent } from "@/config";
 import { type FirebaseEvent } from "@/firebase";
 import { type ProfilesEvent } from "@/profiles";
 import { type ProjectsEvent } from "@/projects";
@@ -14,6 +15,7 @@ export type Events = {
   auth: AuthEvent;
   projects: ProjectsEvent;
   settings: SettingsEvent;
+  config: ConfigEvent;
 };
 
 export type EventsEmitter = Emitter<Events>;

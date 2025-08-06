@@ -1,6 +1,6 @@
 import { type FirebaseApp } from "firebase/app";
 
-export { type FirebaseApp } from "firebase/app";
+export { type FirebaseApp, type FirebaseOptions } from "firebase/app";
 
 export type FirebaseState =
   | NotInitializedFirebaseState

@@ -9,7 +9,8 @@ export type AppError =
   | AuthAppError
   | FirebaseAppError
   | ProjectsAppError
-  | SettingsAppError;
+  | SettingsAppError
+  | ConfigAppError;
 
 export interface ProfilesAppError {
   readonly source: "profiles";
@@ -33,5 +34,10 @@ export interface SettingsAppError {
 
 export interface ProjectsAppError {
   readonly source: "projects";
+  readonly error: ProjectsError;
+}
+
+export interface ConfigAppError {
+  readonly source: "config";
   readonly error: ProjectsError;
 }
