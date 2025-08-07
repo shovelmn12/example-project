@@ -1,4 +1,4 @@
-import { useMemo } from "@/utils";
+import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
   type CreateBlocProps,
@@ -15,7 +15,7 @@ function createHandlers(
 ): EventHandlersObject<FirebaseEvent, FirebaseState> {
   return {
     init: (event, context) => onInit(event, context, { bus }),
-    initialized: () => {},
+    initialized: noOp,
   };
 }
 

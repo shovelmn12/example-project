@@ -361,6 +361,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # SWC
-.swc
+.swc/
 
 # End of https://www.toptal.com/developers/gitignore/api/react,node,macos,linux,windows,visualstudiocode,intellij

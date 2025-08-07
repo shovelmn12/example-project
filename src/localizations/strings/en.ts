@@ -1,7 +1,15 @@
 import type { Strings } from ".";
 
 const en: Strings = {
+  header: {
+    actions: {
+      settings: "Settings",
+      logout: "Logout",
+    },
+  },
   auth: {
+    title: "Authentication",
+    options: "Sign in options",
     actions: {
       google: {
         login: "Sign in with Google",
@@ -12,6 +20,7 @@ const en: Strings = {
   home: {
     actions: {
       go_to_profiles: "Profiles",
+      go_to_projects: "Projects",
     },
   },
   profiles: {
@@ -26,6 +35,22 @@ const en: Strings = {
     actions: {
       create: "Create Profile",
     },
+  },
+  projects: {
+    count: "Project count",
+    fields: {
+      id: "ID",
+      name: "NAME",
+      description: "DESCRIPTION",
+    },
+    actions: {
+      create: "Create Project",
+    },
+  },
+  theme: {
+    light: "Light",
+    dark: "Dark",
+    auto: "System",
   },
 };
 

@@ -1,4 +1,4 @@
-import { WSwitch, Route, type JSX, Box, Spinner } from "@/theme";
+import { WSwitch, Route, type JSX, Box, Spinner, Suspense } from "@/theme";
 import { lazy } from "@/utils";
 import { useIsAuth } from "@/authentication";
 
@@ -10,8 +10,14 @@ const AuthScreen = lazy(async () => ({
 const HomeScreen = lazy(async () => ({
   default: (await import("./home")).HomeScreen,
 }));
+const SettingsScreen = lazy(async () => ({
+  default: (await import("./settings")).SettingsScreen,
+}));
 const ProfilesRouter = lazy(async () => ({
   default: (await import("./profiles")).ProfilesRouter,
+}));
+const ProjectsRouter = lazy(async () => ({
+  default: (await import("./projects")).ProjectsRouter,
 }));
 
 export function Router(): JSX.Element {
@@ -35,12 +41,52 @@ export function Router(): JSX.Element {
       <Header />
       <WSwitch>
         <Route path="/profiles/*?">
-          <ProfilesRouter />
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <ProfilesRouter />
+          </Suspense>
         </Route>
-        <Route path="/">
-          <Box animation="fadeIn" fill>
-            <HomeScreen />
-          </Box>
+        <Route path="/projects/*?">
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <ProjectsRouter />
+          </Suspense>
+        </Route>
+        <Route path="/settings">
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <Box animation="fadeIn" fill>
+              <SettingsScreen />
+            </Box>
+          </Suspense>
+        </Route>
+        <Route>
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <Box animation="fadeIn" fill>
+              <HomeScreen />
+            </Box>
+          </Suspense>
         </Route>
       </WSwitch>
     </Box>
