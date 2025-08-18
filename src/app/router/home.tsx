@@ -26,11 +26,24 @@ export function HomeScreen(): JSX.Element {
   );
 }
 
+const HASH = new Uint8Array([
+  205, 99, 51, 10, 134, 249, 152, 234, 38, 253, 186, 249, 123, 28, 120, 123,
+  211, 63, 102, 214, 143, 224, 194, 167, 215, 178, 202, 18, 118, 4, 43, 190,
+]);
+
 function WebTransportButton(): JSX.Element {
   const [wt, setWt] = useState<Option<WebTransport>>(none);
   const onClick = useCallback(() => {
     try {
-      setWt(some(new WebTransport("https://[::1]:4433")));
+      setWt(
+        some(
+          new WebTransport("https://[::1]:443", {
+            serverCertificateHashes: [
+              { algorithm: "sha-256", value: HASH.buffer },
+            ],
+          })
+        )
+      );
     } catch (e) {
       console.error(e);
       setWt(none);
