@@ -7,6 +7,7 @@ export function HomeScreen(): JSX.Element {
   const strings = useStrings();
   const goToProfiles = useCallback(() => navigate("/profiles"), [navigate]);
   const goToProjects = useCallback(() => navigate("/projects"), [navigate]);
+  const goToServices = useCallback(() => navigate("/services"), [navigate]);
 
   return (
     <Page fill>
@@ -18,6 +19,10 @@ export function HomeScreen(): JSX.Element {
         <Button
           onClick={goToProjects}
           label={strings.home.actions.go_to_projects}
+        />
+        <Button
+          onClick={goToServices}
+          label={strings.home.actions.go_to_services}
         />
       </PageContent>
     </Page>

@@ -21,6 +21,7 @@ const en: Strings = {
     actions: {
       go_to_profiles: "Profiles",
       go_to_projects: "Projects",
+      go_to_services: "Services",
     },
   },
   profiles: {
@@ -45,6 +46,17 @@ const en: Strings = {
     },
     actions: {
       create: "Create Project",
+    },
+  },
+  services: {
+    count: "Service count",
+    fields: {
+      id: "ID",
+      name: "NAME",
+      description: "DESCRIPTION",
+    },
+    actions: {
+      create: "Create Service",
     },
   },
   theme: {

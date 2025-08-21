@@ -5,6 +5,7 @@ import { useEventsBus } from "@/events";
 import { useEffect } from "@/utils";
 import { AuthSync } from "@/authentication";
 import { ProjectsSync } from "@/projects";
+import { ServicesSync } from "@/services/sync";
 import { SettingsSync } from "@/settings";
 import { ConfigSync } from "@/config";
 import { LoggerSync } from "@/logger";
@@ -32,7 +33,9 @@ export function Syncs({ children }: React.PropsWithChildren): JSX.Element {
             <FirebaseSync>
               <AuthSync>
                 <ProfilesSync>
-                  <ProjectsSync>{children}</ProjectsSync>
+                  <ProjectsSync>
+                    <ServicesSync>{children}</ServicesSync>
+                  </ProjectsSync>
                 </ProfilesSync>
               </AuthSync>
             </FirebaseSync>
