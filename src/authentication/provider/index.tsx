@@ -9,6 +9,7 @@ import { useFirebaseApp, type FirebaseApp } from "@/firebase";
 
 import { type AuthEvent, AuthContext, type AuthState } from "..";
 
+import { onInit } from "./init";
 import { onLogin } from "./login";
 import { onLogout } from "./logout";
 import { onLoggedIn } from "./logged_in";
@@ -19,6 +20,7 @@ function createHandlers(
   firebase: FirebaseApp
 ): EventHandlersObject<AuthEvent, AuthState> {
   return {
+    init: (event, context) => onInit(event, context, { firebase, bus }),
     login: (event, context) => onLogin(event, context, { firebase, bus }),
     logout: (event, context) => onLogout(event, context, { firebase, bus }),
     logged_in: (event, context) => onLoggedIn(event, context, { bus }),

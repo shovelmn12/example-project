@@ -3,18 +3,16 @@ import { useBlocSelectState } from "@/bloc";
 import { AuthContext, type AuthState } from "..";
 import { useCallback } from "react";
 
-export function useIsAuth(): boolean {
+export function useIsAuthInitialized(): boolean {
   return useBlocSelectState(
     AuthContext,
     useCallback((state: AuthState) => {
       switch (state.type) {
         case "data":
-          return state.value._tag === "Some";
+          return true;
         case "error":
         case "loading":
-          return (
-            state.value._tag === "Some" && state.value.value._tag === "Some"
-          );
+          return state.value._tag === "Some";
 
         default:
           return false;
