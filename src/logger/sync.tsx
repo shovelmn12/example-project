@@ -1,19 +1,21 @@
 import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
 import { type JSX } from "@/theme";
-
-import { useLogger } from "./hooks";
 import type { AppEvent } from "@/app";
+import { useConfigShouldLog } from "@/config";
+
+import { useLogger } from ".";
 
 export function LoggerSync({ children }: React.PropsWithChildren): JSX.Element {
-  if (import.meta.env.DEV) {
-    return <DevLogger>{children}</DevLogger>;
+  console.log("should log", useConfigShouldLog());
+  if (useConfigShouldLog()) {
+    return <Logger>{children}</Logger>;
   }
 
   return <>{children}</>;
 }
 
-function DevLogger({ children }: React.PropsWithChildren): JSX.Element {
+function Logger({ children }: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const logger = useLogger();
   const onEvent = useCallback(

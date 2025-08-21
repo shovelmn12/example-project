@@ -2,7 +2,7 @@ import { type BlocContext } from "@/bloc";
 import { type EventsEmitter } from "@/events";
 
 import { type ConfigState, type InitConfigEvent } from "..";
-import { none } from "@/utils";
+import { none, parseBoolean } from "@/utils";
 
 export interface InitUtils {
   readonly bus: EventsEmitter;
@@ -18,6 +18,7 @@ export function onInit(
       env: {
         firebase: JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG),
       },
+      log: parseBoolean(import.meta.env.VITE_LOG, import.meta.env.DEV),
     };
 
     update({

@@ -10,16 +10,27 @@ import { SettingsSync } from "@/settings";
 import { ConfigSync } from "@/config";
 import { LoggerSync } from "@/logger";
 
-export function AppSync({ children }: React.PropsWithChildren) {
+import { useIsAppPreInit } from ".";
+
+function AppSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
+  const isPreInit = useIsAppPreInit();
 
   useEffect(
     () =>
       bus.emit("app", {
-        type: "init",
+        type: "pre-init",
       }),
     [bus]
   );
+
+  useEffect(() => {
+    if (isPreInit) {
+      bus.emit("app", {
+        type: "init",
+      });
+    }
+  }, [bus, isPreInit]);
 
   return <>{children}</>;
 }

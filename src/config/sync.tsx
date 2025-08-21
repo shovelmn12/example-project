@@ -9,7 +9,7 @@ export function ConfigSync({ children }: React.PropsWithChildren) {
   const bloc = useConfigBloc();
   const onInit = useCallback(
     (event: AppEvent) => {
-      if (event.type === "init") {
+      if (event.type === "pre-init") {
         bus.emit("config", { type: "init" });
       }
     },

@@ -9,3 +9,5 @@ export { type Option, some, none } from "fp-ts/lib/Option";
 export * from "./compose";
 export * from "./no_op";
 export * from "./responsive";
+export { default as isUndefined } from "lodash/isUndefined";
+export * from "./string";
