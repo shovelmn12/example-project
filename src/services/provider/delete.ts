@@ -8,15 +8,19 @@ export interface DeleteUtils {
 }
 
 export function onDelete(
-  { service }: DeleteServiceEvent,
-  { update }: BlocContext<ServicesState>,
+  { serviceId }: DeleteServiceEvent,
+  { getState, update }: BlocContext<ServicesState>,
   { bus }: DeleteUtils
 ): void {
-  update((state: ServicesState) => {
-    const newState = { ...state };
-    delete newState[service.id];
-    return newState;
-  });
+  const service = getState()[serviceId];
 
-  bus.emit("services", { type: "deleted", service });
+  if (service.type === "data") {
+    update((state: ServicesState) => {
+      const newState = { ...state };
+      delete newState[serviceId];
+      return newState;
+    });
+
+    bus.emit("services", { type: "deleted", service: service.value });
+  }
 }

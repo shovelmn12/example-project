@@ -1,4 +1,4 @@
-import { type Service } from "./service";
+import { type Service, type ServiceID } from "./service";
 
 export type ServicesEvent =
   | CreateServiceEvent
@@ -29,7 +29,7 @@ export interface UpdatedServiceEvent {
 
 export interface DeleteServiceEvent {
   readonly type: "delete";
-  readonly service: Service;
+  readonly serviceId: ServiceID;
 }
 
 export interface DeletedServiceEvent {

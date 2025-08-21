@@ -21,6 +21,7 @@ export type Strings = {
     readonly actions: {
       readonly go_to_profiles: string;
       readonly go_to_projects: string;
+      readonly go_to_services: string;
     };
   };
   readonly profiles: {

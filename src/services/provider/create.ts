@@ -4,6 +4,7 @@ import { generateServiceID, randomBool } from "@/utils";
 
 import {
   type CreateServiceEvent,
+  type ServiceError,
   type ServiceState,
   type ServicesState,
 } from "..";
@@ -34,14 +35,15 @@ export function onCreate(
 
     bus.emit("services", { type: "created", service: service.value });
   } else {
+    const error: ServiceError = {
+      type: "unknown",
+      error: "Some unknown error",
+    };
     bus.emit("app", {
       type: "error",
       error: {
         source: "services",
-        error: {
-          type: "unknown",
-          error: "Some unknown error",
-        },
+        error,
       },
     });
   }

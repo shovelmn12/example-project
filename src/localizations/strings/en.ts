@@ -21,6 +21,7 @@ const en: Strings = {
     actions: {
       go_to_profiles: "Profiles",
       go_to_projects: "Projects",
+      go_to_services: "Services",
     },
   },
   profiles: {

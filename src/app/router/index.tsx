@@ -19,6 +19,9 @@ const ProfilesRouter = lazy(async () => ({
 const ProjectsRouter = lazy(async () => ({
   default: (await import("./projects")).ProjectsRouter,
 }));
+const ServicesPage = lazy(async () => ({
+  default: (await import("./services")).ServicesPage,
+}));
 
 export function Router(): JSX.Element {
   const isInit = useIsAppInit();
@@ -60,6 +63,19 @@ export function Router(): JSX.Element {
             }
           >
             <ProjectsRouter />
+          </Suspense>
+        </Route>
+        <Route path="/services">
+          <Suspense
+            fallback={
+              <Box justify="center" align="center" animation="pulse" fill>
+                <Spinner />
+              </Box>
+            }
+          >
+            <Box animation="fadeIn" fill>
+              <ServicesPage />
+            </Box>
           </Suspense>
         </Route>
         <Route path="/settings">

@@ -3,7 +3,6 @@ import { type EventsEmitter } from "@/events";
 
 import {
   type UpdateServiceEvent,
-  type Service,
   type ServiceState,
   type ServicesState,
 } from "..";
