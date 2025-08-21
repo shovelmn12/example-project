@@ -88,14 +88,17 @@ src
 │   │   ├── index.ts
 │   │   └── profile.ts
 │   ├── context.tsx # Context for the Profiles BLoC
-│   └── provider.tsx# BLoC logic and provider
+│   └── provider/   # BLoC logic and provider
+│       ├── index.tsx
+│       └── create.ts
 ├── app.tsx         # Main application component
 └── main.tsx        # Application entry point
 ```
 
 ### Key Files in a Feature Module (`profiles/`)
 
-*   **`provider.tsx`**: The core of the feature. It creates the BLoC, defines the event handlers (the business logic), and subscribes to the global event bus.
+*   **`provider/index.tsx`**: The core of the feature's provider. It creates the BLoC instance, composes the different event handlers from other files in this directory, and subscribes the BLoC to the global event bus.
+*   **`provider/{handler}.ts`**: (e.g., `create.ts`, `delete.ts`). Each file contains the business logic for a specific event or a group of related events. This keeps the logic for each action neatly separated.
 *   **`context.tsx`**: Defines the shape of the feature's BLoC and creates the React context to hold it.
 *   **`models/`**: Contains all data structures (`Profile`) and event definitions (`ProfilesEvent`) specific to the feature. This keeps the feature's "language" self-contained.
 *   **`components/`**: Contains all React components that are primarily concerned with this feature.
