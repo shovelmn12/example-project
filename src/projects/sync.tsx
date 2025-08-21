@@ -1,7 +1,7 @@
 import { useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
 
-import { useProjectsBloc } from "./hooks";
+import { useProjectsBloc } from ".";
 
 export function ProjectsSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();

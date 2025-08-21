@@ -54,68 +54,71 @@ export function ProfilesTable(): JSX.Element {
       </Toolbar>
       <DataTable
         onClickRow={onRowClick}
-        columns={[
-          {
-            property: "value.id",
-            header: strings.profiles.fields.id,
-            sortable: true,
-            search: true,
-            primary: true,
-            render(data: ID) {
-              return (
-                <ProfileProvider id={data.id}>
-                  <Text>
-                    <ProfileIDComponent />
-                  </Text>
-                </ProfileProvider>
-              );
+        columns={useMemo(
+          () => [
+            {
+              property: "value.id",
+              header: strings.profiles.fields.id,
+              sortable: true,
+              search: true,
+              primary: true,
+              render(data: ID) {
+                return (
+                  <ProfileProvider id={data.id}>
+                    <Text>
+                      <ProfileIDComponent />
+                    </Text>
+                  </ProfileProvider>
+                );
+              },
             },
-          },
-          {
-            property: "value.name.first",
-            header: strings.profiles.fields.name.first,
-            sortable: true,
-            search: true,
-            render(data: ID) {
-              return (
-                <ProfileProvider id={data.id}>
-                  <Text>
-                    <ProfileFirstNameComponent />
-                  </Text>
-                </ProfileProvider>
-              );
+            {
+              property: "value.name.first",
+              header: strings.profiles.fields.name.first,
+              sortable: true,
+              search: true,
+              render(data: ID) {
+                return (
+                  <ProfileProvider id={data.id}>
+                    <Text>
+                      <ProfileFirstNameComponent />
+                    </Text>
+                  </ProfileProvider>
+                );
+              },
             },
-          },
-          {
-            property: "value.name.last",
-            header: strings.profiles.fields.name.last,
-            sortable: true,
-            search: true,
-            render(data: ID) {
-              return (
-                <ProfileProvider id={data.id}>
-                  <Text>
-                    <ProfileLastNameComponent />
-                  </Text>
-                </ProfileProvider>
-              );
+            {
+              property: "value.name.last",
+              header: strings.profiles.fields.name.last,
+              sortable: true,
+              search: true,
+              render(data: ID) {
+                return (
+                  <ProfileProvider id={data.id}>
+                    <Text>
+                      <ProfileLastNameComponent />
+                    </Text>
+                  </ProfileProvider>
+                );
+              },
             },
-          },
-          {
-            property: "actions",
-            header: "",
-            render(data: ID) {
-              return (
-                <Button
-                  icon={<Trash />}
-                  onClick={() =>
-                    bus.emit("profiles", { type: "delete", id: data.id })
-                  }
-                />
-              );
+            {
+              property: "actions",
+              header: "",
+              render(data: ID) {
+                return (
+                  <Button
+                    icon={<Trash />}
+                    onClick={() =>
+                      bus.emit("profiles", { type: "delete", id: data.id })
+                    }
+                  />
+                );
+              },
             },
-          },
-        ]}
+          ],
+          [strings, bus]
+        )}
         resizeable
       />
     </Data>

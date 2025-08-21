@@ -1,8 +1,8 @@
 import { useStrings } from "@/localizations";
 import { Card, Page, PageContent, Text, type JSX } from "@/theme";
-import { CreateProfile, ProfilesCount, ProfilesTable } from "@/profiles";
+import { CreateService, ServicesCount, ServicesTable } from "@/services";
 
-export function ProfilesScreen(): JSX.Element {
+export function ServicesScreen(): JSX.Element {
   const strings = useStrings();
 
   return (
@@ -17,11 +17,11 @@ export function ProfilesScreen(): JSX.Element {
           height={{ min: "small" }}
           overflow="auto"
         >
-          <CreateProfile />
+          <CreateService />
           <Text size="xsmall">
-            {strings.profiles.count}: <ProfilesCount />
+            {strings.services.count}: <ServicesCount />
           </Text>
-          <ProfilesTable />
+          <ServicesTable />
         </Card>
       </PageContent>
     </Page>

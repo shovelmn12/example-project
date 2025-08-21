@@ -19,8 +19,8 @@ const ProfilesRouter = lazy(async () => ({
 const ProjectsRouter = lazy(async () => ({
   default: (await import("./projects")).ProjectsRouter,
 }));
-const ServicesPage = lazy(async () => ({
-  default: (await import("./services")).ServicesPage,
+const ServicesRouter = lazy(async () => ({
+  default: (await import("./services")).ServicesRouter,
 }));
 
 export function Router(): JSX.Element {
@@ -65,7 +65,7 @@ export function Router(): JSX.Element {
             <ProjectsRouter />
           </Suspense>
         </Route>
-        <Route path="/services">
+        <Route path="/services/*?">
           <Suspense
             fallback={
               <Box justify="center" align="center" animation="pulse" fill>
@@ -74,7 +74,7 @@ export function Router(): JSX.Element {
             }
           >
             <Box animation="fadeIn" fill>
-              <ServicesPage />
+              <ServicesRouter />
             </Box>
           </Suspense>
         </Route>

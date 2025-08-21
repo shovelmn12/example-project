@@ -1,40 +1,110 @@
 import {
-  Box,
+  Button,
+  Data,
   DataTable,
-  type DataTableColumns,
+  DataTableColumns,
+  Toolbar,
   type JSX,
+  type MouseClick,
+  type KeyPress,
+  Text,
 } from "@/theme";
-import { useServices } from "@/services";
+import { useEventsBus } from "@/events";
+import { Trash } from "@/theme/icons";
 import { useStrings } from "@/localizations";
-import { type Service } from "@/services/models";
+import { useCallback, useLocation, useMemo } from "@/utils";
+
+import {
+  ServiceIDComponent,
+  ServiceNameComponent,
+  ServiceProvider,
+  useServicesIDs,
+} from "..";
+
+interface ID {
+  readonly id: string;
+}
 
 export function ServicesTable(): JSX.Element {
-  const services = useServices();
+  const [, navigate] = useLocation();
+  const bus = useEventsBus();
   const strings = useStrings();
-
-  const columns: DataTableColumns<Service> = [
-    {
-      property: "id",
-      header: strings.services.fields.id,
-      primary: true,
-    },
-    {
-      property: "name",
-      header: strings.services.fields.name,
-    },
-    {
-      property: "description",
-      header: strings.services.fields.description,
-    },
-  ];
+  const ids = useServicesIDs();
+  const data: ID[] = useMemo(
+    () =>
+      ids.map((id) => ({
+        id,
+      })),
+    [ids]
+  );
+  const onRowClick = useCallback(
+    (event: MouseClick<ID> | KeyPress<ID>) =>
+      navigate(`~/services/${event.datum.id}`),
+    [navigate]
+  );
 
   return (
-    <Box>
+    <Data data={data} gap="medium">
+      <Toolbar>
+        <DataTableColumns
+          options={["value.id", "value.name", "value.name"]}
+          drop
+        />
+      </Toolbar>
       <DataTable
-        columns={columns}
-        data={services}
-        primaryKey="id"
+        onClickRow={onRowClick}
+        columns={useMemo(
+          () => [
+            {
+              property: "value.id",
+              header: strings.services.fields.id,
+              sortable: true,
+              search: true,
+              primary: true,
+              render(data: ID) {
+                return (
+                  <ServiceProvider id={data.id}>
+                    <Text>
+                      <ServiceIDComponent />
+                    </Text>
+                  </ServiceProvider>
+                );
+              },
+            },
+            {
+              property: "value.name",
+              header: strings.services.fields.name,
+              sortable: true,
+              search: true,
+              render(data: ID) {
+                return (
+                  <ServiceProvider id={data.id}>
+                    <Text>
+                      <ServiceNameComponent />
+                    </Text>
+                  </ServiceProvider>
+                );
+              },
+            },
+            {
+              property: "actions",
+              header: "",
+              render(data: ID) {
+                return (
+                  <Button
+                    icon={<Trash />}
+                    onClick={() =>
+                      bus.emit("services", { type: "delete", id: data.id })
+                    }
+                  />
+                );
+              },
+            },
+          ],
+          [strings, bus]
+        )}
+        resizeable
       />
-    </Box>
+    </Data>
   );
 }
