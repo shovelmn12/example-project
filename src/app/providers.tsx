@@ -3,6 +3,7 @@ import { ProfilesProvider } from "@/profiles";
 import { FirebaseProvider } from "@/firebase";
 import { AuthProvider } from "@/authentication";
 import { ProjectsProvider } from "@/projects";
+import { ServicesProvider } from "@/services";
 import { SettingsProvider } from "@/settings";
 import { ConfigProvider } from "@/config";
 
@@ -13,7 +14,9 @@ export function Providers({ children }: React.PropsWithChildren): JSX.Element {
         <FirebaseProvider>
           <AuthProvider>
             <ProfilesProvider>
-              <ProjectsProvider>{children}</ProjectsProvider>
+              <ProjectsProvider>
+                <ServicesProvider>{children}</ServicesProvider>
+              </ProjectsProvider>
             </ProfilesProvider>
           </AuthProvider>
         </FirebaseProvider>

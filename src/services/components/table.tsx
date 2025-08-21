@@ -15,22 +15,21 @@ import { useStrings } from "@/localizations";
 import { useCallback, useLocation, useMemo } from "@/utils";
 
 import {
-  ProfileIDComponent,
-  ProfileFirstNameComponent,
-  ProfileLastNameComponent,
-  ProfileProvider,
-  useProfilesIDs,
+  ServiceIDComponent,
+  ServiceNameComponent,
+  ServiceProvider,
+  useServicesIDs,
 } from "..";
 
 interface ID {
   readonly id: string;
 }
 
-export function ProfilesTable(): JSX.Element {
+export function ServicesTable(): JSX.Element {
   const [, navigate] = useLocation();
   const bus = useEventsBus();
   const strings = useStrings();
-  const ids = useProfilesIDs();
+  const ids = useServicesIDs();
   const data: ID[] = useMemo(
     () =>
       ids.map((id) => ({
@@ -40,7 +39,7 @@ export function ProfilesTable(): JSX.Element {
   );
   const onRowClick = useCallback(
     (event: MouseClick<ID> | KeyPress<ID>) =>
-      navigate(`~/profiles/${event.datum.id}`),
+      navigate(`~/services/${event.datum.id}`),
     [navigate]
   );
 
@@ -48,7 +47,7 @@ export function ProfilesTable(): JSX.Element {
     <Data data={data} gap="medium">
       <Toolbar>
         <DataTableColumns
-          options={["value.id", "value.name.first", "value.name.last"]}
+          options={["value.id", "value.name", "value.name"]}
           drop
         />
       </Toolbar>
@@ -58,47 +57,32 @@ export function ProfilesTable(): JSX.Element {
           () => [
             {
               property: "value.id",
-              header: strings.profiles.fields.id,
+              header: strings.services.fields.id,
               sortable: true,
               search: true,
               primary: true,
               render(data: ID) {
                 return (
-                  <ProfileProvider id={data.id}>
+                  <ServiceProvider id={data.id}>
                     <Text>
-                      <ProfileIDComponent />
+                      <ServiceIDComponent />
                     </Text>
-                  </ProfileProvider>
+                  </ServiceProvider>
                 );
               },
             },
             {
-              property: "value.name.first",
-              header: strings.profiles.fields.name.first,
+              property: "value.name",
+              header: strings.services.fields.name,
               sortable: true,
               search: true,
               render(data: ID) {
                 return (
-                  <ProfileProvider id={data.id}>
+                  <ServiceProvider id={data.id}>
                     <Text>
-                      <ProfileFirstNameComponent />
+                      <ServiceNameComponent />
                     </Text>
-                  </ProfileProvider>
-                );
-              },
-            },
-            {
-              property: "value.name.last",
-              header: strings.profiles.fields.name.last,
-              sortable: true,
-              search: true,
-              render(data: ID) {
-                return (
-                  <ProfileProvider id={data.id}>
-                    <Text>
-                      <ProfileLastNameComponent />
-                    </Text>
-                  </ProfileProvider>
+                  </ServiceProvider>
                 );
               },
             },
@@ -110,7 +94,7 @@ export function ProfilesTable(): JSX.Element {
                   <Button
                     icon={<Trash />}
                     onClick={() =>
-                      bus.emit("profiles", { type: "delete", id: data.id })
+                      bus.emit("services", { type: "delete", id: data.id })
                     }
                   />
                 );

@@ -4,11 +4,13 @@ import type { ConfigEvent } from "@/config";
 import { type FirebaseEvent } from "@/firebase";
 import { type ProfilesEvent } from "@/profiles";
 import { type ProjectsEvent } from "@/projects";
+import { type ServicesEvent } from "@/services";
 import { type SettingsEvent } from "@/settings";
 import { mitt, createContext, type Emitter } from "@/utils";
 
 export type Events = {
   profiles: ProfilesEvent;
+  services: ServicesEvent;
   renders: string;
   app: AppEvent;
   firebase: FirebaseEvent;

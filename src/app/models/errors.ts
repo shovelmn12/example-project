@@ -2,6 +2,7 @@ import { type AuthError } from "@/authentication";
 import { type FirebaseError } from "@/firebase";
 import { type ProfilesError } from "@/profiles";
 import type { ProjectsError } from "@/projects";
+import { type ServiceError } from "@/services";
 import type { SettingsError } from "@/settings";
 
 export type AppError =
@@ -10,7 +11,8 @@ export type AppError =
   | FirebaseAppError
   | ProjectsAppError
   | SettingsAppError
-  | ConfigAppError;
+  | ConfigAppError
+  | ServicesAppError;
 
 export interface ProfilesAppError {
   readonly source: "profiles";
@@ -40,4 +42,9 @@ export interface ProjectsAppError {
 export interface ConfigAppError {
   readonly source: "config";
   readonly error: ProjectsError;
+}
+
+export interface ServicesAppError {
+  readonly source: "services";
+  readonly error: ServiceError;
 }

@@ -5,7 +5,6 @@ import { useEventsBus } from "@/events";
 
 import { useAuthBloc } from ".";
 import { useFirebaseApp } from "@/firebase";
-import type { AppEvent } from "@/app";
 
 export function AuthSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
@@ -19,24 +18,12 @@ export function AuthSync({ children }: React.PropsWithChildren) {
     () => bus.emit("auth", { type: "logged_out" }),
     [bus]
   );
-  const onInit = useCallback(
-    (event: AppEvent) => {
-      if (event.type === "init") {
-        bus.emit("auth", { type: "init" });
-      }
-    },
-    [bus]
-  );
 
   useEffect(() => {
     bus.on("auth", bloc.add);
-    bus.on("app", onInit);
 
-    return () => {
-      bus.off("auth", bloc.add);
-      bus.off("app", onInit);
-    };
-  }, [bus, onInit, bloc.add]);
+    return () => bus.off("auth", bloc.add);
+  }, [bus, bloc.add]);
 
   useEffect(() => {
     if (firebase._tag === "Some") {

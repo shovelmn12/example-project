@@ -2,7 +2,7 @@ import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
 import { type AppEvent } from "@/app";
 
-import { useSettingsBloc } from "./hooks";
+import { useSettingsBloc } from ".";
 
 export function SettingsSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
