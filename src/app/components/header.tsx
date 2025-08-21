@@ -58,7 +58,7 @@ export function Header(): JSX.Element {
               onClick: () => bus.emit("auth", { type: "logout" }),
             },
           ],
-          [bus, navigate]
+          [bus, navigate, strings]
         )}
         plain
       >
