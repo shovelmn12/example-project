@@ -47,6 +47,17 @@ export type Strings = {
       readonly create: string;
     };
   };
+  readonly services: {
+    readonly fields: {
+      readonly id: string;
+      readonly name: string;
+      readonly description: string;
+    };
+    readonly count: string;
+    readonly actions: {
+      readonly create: string;
+    };
+  };
   readonly theme: {
     readonly light: string;
     readonly dark: string;

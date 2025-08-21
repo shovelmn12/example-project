@@ -47,6 +47,17 @@ const en: Strings = {
       create: "Create Project",
     },
   },
+  services: {
+    count: "Service count",
+    fields: {
+      id: "ID",
+      name: "NAME",
+      description: "DESCRIPTION",
+    },
+    actions: {
+      create: "Create Service",
+    },
+  },
   theme: {
     light: "Light",
     dark: "Dark",

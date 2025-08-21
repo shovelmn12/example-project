@@ -7,3 +7,7 @@ export function generateProfileID(): string {
 export function generateProjectID(): string {
   return `prj_${createId()}`;
 }
+
+export function generateServiceID(): string {
+  return `srv_${createId()}`;
+}
