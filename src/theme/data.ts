@@ -60,8 +60,6 @@ export const aTheme: ThemeType = {
 
 export const myTheme: ThemeType = deepMerge(generate(16), aTheme);
 
-console.log(myTheme);
-
 export const materialTheme: ThemeType = {
   global: {
     colors: {

@@ -7,7 +7,6 @@ import { useConfigShouldLog } from "@/config";
 import { useLogger } from ".";
 
 export function LoggerSync({ children }: React.PropsWithChildren): JSX.Element {
-  console.log("should log", useConfigShouldLog());
   if (useConfigShouldLog()) {
     return <Logger>{children}</Logger>;
   }
