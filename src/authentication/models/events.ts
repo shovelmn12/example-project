@@ -1,8 +1,13 @@
 export type AuthEvent =
+  | InitAuthEvent
   | LoginAuthEvent
   | LoggedInAuthEvent
   | LogoutAuthEvent
   | LoggedOutAuthEvent;
+
+export interface InitAuthEvent {
+  readonly type: "init";
+}
 
 export interface LoginAuthEvent {
   readonly type: "login";
