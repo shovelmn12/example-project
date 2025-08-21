@@ -5,7 +5,7 @@ import {
   Main,
   Spinner,
   Suspense,
-  myTheme as theme,
+  theme,
 } from "@/theme";
 import { lazy } from "@/utils";
 import { useIsFirebaseInitialized } from "@/firebase";
