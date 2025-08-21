@@ -9,7 +9,7 @@ import { SettingsSync } from "@/settings";
 import { ConfigSync } from "@/config";
 import { LoggerSync } from "@/logger";
 
-export function AppSync({ children }: React.PropsWithChildren) {
+function AppSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
 
   useEffect(

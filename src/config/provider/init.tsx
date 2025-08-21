@@ -18,6 +18,7 @@ export function onInit(
       env: {
         firebase: JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG),
       },
+      log: import.meta.env.VITE_LOG ?? import.meta.env.DEV,
     };
 
     update({
