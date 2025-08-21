@@ -1,6 +1,10 @@
 import type { AppError } from "./errors";
 
-export type AppEvent = InitAppEvent | AppErrorEvent;
+export type AppEvent = PreInitAppEvent | InitAppEvent | AppErrorEvent;
+
+export interface PreInitAppEvent {
+  readonly type: "pre-init";
+}
 
 export interface InitAppEvent {
   readonly type: "init";
