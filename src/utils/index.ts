@@ -5,7 +5,7 @@ export * from "./react";
 export * from "./grommet";
 export * from "./click";
 export { randomBool } from "fp-ts/lib/Random";
-export { type Option, some, none } from "fp-ts/lib/Option";
+export { type Option, some, none, fromNullable } from "fp-ts/lib/Option";
 export * from "./compose";
 export * from "./no_op";
 export * from "./responsive";
