@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
@@ -36,7 +37,9 @@ function createHandlers(
  * @param props.children The children to render.
  * @returns The projects provider.
  */
-export function ProjectsProvider({ children }: React.PropsWithChildren) {
+export function ProjectsProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useCreateBloc(
     useMemo<CreateBlocProps<ProjectsEvent, ProjectsState>>(

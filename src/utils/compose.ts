@@ -7,16 +7,16 @@
  * @template R The type of the return value of the functions.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const pipe = <T extends any[], R>(
+export function pipe<T extends any[], R>(
   fn1: (...args: T) => R,
   ...fns: Array<(a: R) => R>
-) => {
+): (...args: T) => R {
   const piped = fns.reduce(
     (prevFn, nextFn) => (value: R) => nextFn(prevFn(value)),
     (value) => value
   );
   return (...args: T) => piped(fn1(...args));
-};
+}
 
 /**
  * Composes functions from right to left.
@@ -25,5 +25,9 @@ export const pipe = <T extends any[], R>(
  * @returns A new function that composes the functions from right to left.
  * @template R The type of the return value of the functions.
  */
-export const compose = <R>(fn1: (a: R) => R, ...fns: Array<(a: R) => R>) =>
-  fns.reduce((prevFn, nextFn) => (value) => prevFn(nextFn(value)), fn1);
+export function compose<R>(
+  fn1: (a: R) => R,
+  ...fns: Array<(a: R) => R>
+): (a: R) => R {
+  return fns.reduce((prevFn, nextFn) => (value) => prevFn(nextFn(value)), fn1);
+}

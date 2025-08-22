@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
 import { type ConfigEvent } from "@/config";
@@ -10,7 +11,9 @@ import { useFirebaseBloc } from ".";
  * @param props.children The children to render.
  * @returns The component.
  */
-export function FirebaseSync({ children }: React.PropsWithChildren) {
+export function FirebaseSync({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useFirebaseBloc();
   const onInit = useCallback(

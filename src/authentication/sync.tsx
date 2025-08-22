@@ -1,10 +1,11 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
+import { type JSX } from "@/theme";
 import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
+import { useFirebaseApp } from "@/firebase";
 
 import { useAuthBloc } from ".";
-import { useFirebaseApp } from "@/firebase";
 
 /**
  * A component that syncs the auth BLoC with the event bus and Firebase auth.
@@ -12,7 +13,7 @@ import { useFirebaseApp } from "@/firebase";
  * @param props.children The children to render.
  * @returns The component.
  */
-export function AuthSync({ children }: React.PropsWithChildren) {
+export function AuthSync({ children }: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useAuthBloc();
   const firebase = useFirebaseApp();
