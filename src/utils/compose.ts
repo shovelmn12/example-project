@@ -18,14 +18,6 @@ export function pipe<T extends any[], R>(
   return (...args: T) => piped(fn1(...args));
 }
 
-<<<<<<< HEAD
-export function compose<R>(
-  fn1: (a: R) => R,
-  ...fns: Array<(a: R) => R>
-): (a: R) => R {
-  return fns.reduce((prevFn, nextFn) => (value) => prevFn(nextFn(value)), fn1);
-}
-=======
 /**
  * Composes functions from right to left.
  * @param fn1 The first function.
@@ -33,6 +25,9 @@ export function compose<R>(
  * @returns A new function that composes the functions from right to left.
  * @template R The type of the return value of the functions.
  */
-export const compose = <R>(fn1: (a: R) => R, ...fns: Array<(a: R) => R>) =>
-  fns.reduce((prevFn, nextFn) => (value) => prevFn(nextFn(value)), fn1);
->>>>>>> main
+export function compose<R>(
+  fn1: (a: R) => R,
+  ...fns: Array<(a: R) => R>
+): (a: R) => R {
+  return fns.reduce((prevFn, nextFn) => (value) => prevFn(nextFn(value)), fn1);
+}
