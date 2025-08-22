@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { useMemo } from "@/utils";
 import {
   useCreateBloc,
@@ -26,11 +27,13 @@ function createHandlers(
   };
 }
 
-export function AuthProvider({ children }: React.PropsWithChildren) {
+export function AuthProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const option = useFirebaseApp();
 
   if (option._tag === "None") {
-    return children;
+    return <>{children}</>;
   }
 
   return (
