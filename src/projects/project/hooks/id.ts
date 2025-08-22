@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ProjectContext } from "..";
 
+/**
+ * A hook to get the ID of a project.
+ * @returns The ID of the project.
+ */
 export function useProjectID(): Option<string> {
   return useBlocSelectState(
     ProjectContext,

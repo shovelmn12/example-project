@@ -6,11 +6,26 @@ import { type FirebaseApp } from "@/firebase";
 
 import { type AuthState, type LoginAuthEvent } from "..";
 
+/**
+ * The utils for the `onLogin` function.
+ */
 export interface LoginUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
+  /**
+   * The Firebase app.
+   */
   readonly firebase: FirebaseApp;
 }
 
+/**
+ * Handles the `login` event for the auth BLoC.
+ * @param _ The `login` event.
+ * @param __ The BLoC context.
+ * @param utils The utils.
+ */
 export async function onLogin(
   _: LoginAuthEvent,
   __: BlocContext<AuthState>,

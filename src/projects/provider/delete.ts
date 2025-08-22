@@ -3,16 +3,28 @@ import { type EventsEmitter } from "@/events";
 
 import { type DeleteProjectEvent, type ProjectsState } from "..";
 
+/**
+ * The utils for the `onDelete` function.
+ */
 export interface DeleteUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
 }
 
+/**
+ * Handles the `delete` event for the projects BLoC.
+ * @param event The `delete` event.
+ * @param context The BLoC context.
+ * @param utils The utils.
+ */
 export function onDelete(
   event: DeleteProjectEvent,
-  { value, update }: BlocContext<ProjectsState>,
+  { getState, update }: BlocContext<ProjectsState>,
   { bus }: DeleteUtils
 ): void {
-  const project = value[event.id];
+  const project = getState()[event.id];
 
   update((state: ProjectsState) => {
     const next = {

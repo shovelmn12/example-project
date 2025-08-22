@@ -1,12 +1,25 @@
+/**
+ * @fileoverview This file contains all the themes for the application.
+ * It exports the default grommet theme, the hpe theme, and several custom themes.
+ */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { generate, type ThemeType } from "grommet";
 import { type ExtendProps } from "grommet/themes/base";
 
 import { deepMerge } from "@/utils";
 
+/**
+ * Re-exports the `grommet` theme from `grommet/themes`.
+ */
 export { grommet } from "grommet/themes";
+/**
+ * Re-exports all the themes from `grommet-theme-hpe`.
+ */
 export * from "grommet-theme-hpe";
 
+/**
+ * A custom theme for the application.
+ */
 export const aTheme: ThemeType = {
   global: {
     font: {
@@ -58,8 +71,15 @@ export const aTheme: ThemeType = {
   },
 };
 
+/**
+ * The main theme for the application.
+ * It is a deep merge of the default grommet theme and the custom theme.
+ */
 export const myTheme: ThemeType = deepMerge(generate(16), aTheme);
 
+/**
+ * A theme that follows the Material Design guidelines.
+ */
 export const materialTheme: ThemeType = {
   global: {
     colors: {
@@ -280,6 +300,9 @@ export const materialTheme: ThemeType = {
   },
 };
 
+/**
+ * A theme that follows the shadcn design system.
+ */
 export const shadcnTheme: ThemeType = {
   global: {
     colors: {
@@ -451,6 +474,9 @@ export const shadcnTheme: ThemeType = {
   },
 };
 
+/**
+ * A second theme that follows the shadcn design system.
+ */
 export const shadcnTheme2: ThemeType = {
   global: {
     colors: {
@@ -622,6 +648,9 @@ export const shadcnTheme2: ThemeType = {
   },
 };
 
+/**
+ * A theme that follows the Netflix design system.
+ */
 export const netflixTheme: ThemeType = {
   global: {
     colors: {
@@ -724,6 +753,9 @@ export const netflixTheme: ThemeType = {
   },
 };
 
+/**
+ * A theme for testing purposes.
+ */
 export const testTheme: ThemeType = {
   global: {
     colors: {

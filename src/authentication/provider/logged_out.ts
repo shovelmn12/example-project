@@ -4,10 +4,22 @@ import { none } from "@/utils";
 
 import { type AuthState, type LoggedOutAuthEvent } from "..";
 
+/**
+ * The utils for the `onLoggedOut` function.
+ */
 export interface LoggedOutUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
 }
 
+/**
+ * Handles the `logged_out` event for the auth BLoC.
+ * @param _ The `logged_out` event.
+ * @param context The BLoC context.
+ * @param utils The utils.
+ */
 export async function onLoggedOut(
   _: LoggedOutAuthEvent,
   { update }: BlocContext<AuthState>,

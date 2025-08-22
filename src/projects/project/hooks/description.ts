@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ProjectContext } from "..";
 
+/**
+ * A hook to get the description of a project.
+ * @returns The description of the project.
+ */
 export function useProjectDescription(): Option<string> {
   return useBlocSelectState(
     ProjectContext,

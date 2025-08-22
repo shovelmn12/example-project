@@ -7,6 +7,12 @@ import { ServicesProvider } from "@/services";
 import { SettingsProvider } from "@/settings";
 import { ConfigProvider } from "@/config";
 
+/**
+ * A component that provides all the BLoCs to the app.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The `Providers` component.
+ */
 export function Providers({ children }: React.PropsWithChildren): JSX.Element {
   return (
     <ConfigProvider>

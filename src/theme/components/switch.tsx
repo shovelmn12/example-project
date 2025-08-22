@@ -1,6 +1,10 @@
 import { Box, Button, type JSX } from "@/theme";
 import { useState } from "react";
 
+/**
+ * A custom switch component.
+ * @returns The `Switch` component.
+ */
 export function Switch(): JSX.Element {
   const [state, setState] = useState(false);
 

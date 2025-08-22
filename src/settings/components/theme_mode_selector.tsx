@@ -5,15 +5,34 @@ import { useEventsBus } from "@/events";
 
 import { useSettingsThemeMode, type ThemeMode } from "..";
 
+/**
+ * The theme option.
+ */
 interface ThemeOption {
+  /**
+   * The value of the theme option.
+   */
   readonly value: ThemeMode;
+  /**
+   * The name of the theme option.
+   */
   readonly name: string;
 }
 
+/**
+ * The event fired when the theme is changed.
+ */
 interface ThemeChangedEvent {
+  /**
+   * The selected theme option.
+   */
   readonly option: ThemeOption;
 }
 
+/**
+ * A component to select the theme mode.
+ * @returns The `ThemeSelector` component.
+ */
 export function ThemeSelector(): JSX.Element {
   const bus = useEventsBus();
   const strings = useStrings();

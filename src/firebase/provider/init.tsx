@@ -5,10 +5,22 @@ import { type EventsEmitter } from "@/events";
 
 import { type FirebaseState, type InitFirebaseEvent } from "..";
 
+/**
+ * The utils for the `onInit` function.
+ */
 export interface InitUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
 }
 
+/**
+ * Handles the `init` event for the Firebase BLoC.
+ * @param event The `init` event.
+ * @param context The BLoC context.
+ * @param utils The utils.
+ */
 export function onInit(
   event: InitFirebaseEvent,
   { update }: BlocContext<FirebaseState>,

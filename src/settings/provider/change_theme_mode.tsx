@@ -4,10 +4,22 @@ import { none } from "@/utils";
 
 import { type SettingsState, type ChangeThemeModeSettingsEvent } from "..";
 
+/**
+ * The utils for the `onChangeThemeMode` function.
+ */
 export interface ChangeThemeUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
 }
 
+/**
+ * Handles the `change.theme.mode` event for the settings BLoC.
+ * @param event The `change.theme.mode` event.
+ * @param context The BLoC context.
+ * @param utils The utils.
+ */
 export function onChangeThemeMode(
   event: ChangeThemeModeSettingsEvent,
   { value, update }: BlocContext<SettingsState>,

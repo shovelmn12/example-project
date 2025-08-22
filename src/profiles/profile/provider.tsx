@@ -9,10 +9,23 @@ import {
   useProfilesBloc,
 } from "..";
 
+/**
+ * The props for the `ProfileProvider` component.
+ */
 export interface ProfileProviderProps {
+  /**
+   * The ID of the profile.
+   */
   readonly id: string;
 }
 
+/**
+ * The internal provider for the profile BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @param props.id The ID of the profile.
+ * @returns The profile provider.
+ */
 function Provider({
   children,
   id,
@@ -35,4 +48,7 @@ function Provider({
   );
 }
 
+/**
+ * A provider for the profile BLoC.
+ */
 export const ProfileProvider = memo(Provider);

@@ -1,5 +1,8 @@
 import type { Strings } from ".";
 
+/**
+ * The English strings for the application.
+ */
 const en: Strings = {
   header: {
     actions: {

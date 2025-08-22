@@ -3,6 +3,10 @@ import { useBlocSelectState } from "@/bloc";
 
 import { ServicesContext, type ServicesState } from "..";
 
+/**
+ * A hook to get the number of services.
+ * @returns The number of services.
+ */
 export function useServicesCount(): number {
   return useBlocSelectState(
     ServicesContext,

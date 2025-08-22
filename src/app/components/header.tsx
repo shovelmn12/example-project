@@ -12,6 +12,10 @@ import {
 import { Logout, SettingsOption, User } from "@/theme/icons";
 import { useLocation, useMemo } from "@/utils";
 
+/**
+ * The header component.
+ * @returns The `Header` component.
+ */
 export function Header(): JSX.Element {
   const strings = useStrings();
   const bus = useEventsBus();

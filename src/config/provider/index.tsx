@@ -11,6 +11,11 @@ import { ConfigContext, type ConfigEvent, type ConfigState } from "..";
 
 import { onInit } from "./init";
 
+/**
+ * Creates the event handlers for the config BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<ConfigEvent, ConfigState> {
@@ -20,6 +25,12 @@ function createHandlers(
   };
 }
 
+/**
+ * A provider for the config BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The config provider.
+ */
 export function ConfigProvider({
   children,
 }: React.PropsWithChildren): JSX.Element {
