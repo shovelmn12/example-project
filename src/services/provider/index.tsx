@@ -16,6 +16,11 @@ import { onCreate } from "./create";
 import { onDelete } from "./delete";
 import { onUpdate } from "./update";
 
+/**
+ * Creates the event handlers for the services BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<ServicesEvent, ServicesState> {
@@ -29,6 +34,12 @@ function createHandlers(
   };
 }
 
+/**
+ * A provider for the services BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The services provider.
+ */
 export function ServicesProvider({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useCreateBloc(

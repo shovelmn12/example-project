@@ -18,6 +18,10 @@ const Router = lazy(async () => ({
   default: (await import("./router")).Router,
 }));
 
+/**
+ * The main application component.
+ * @returns The `App` component.
+ */
 export function App(): JSX.Element {
   return (
     <Grommet theme={theme} themeMode={useSettingsThemeMode()} full>
@@ -32,6 +36,12 @@ export function App(): JSX.Element {
   );
 }
 
+/**
+ * A container component that displays a spinner while the app is initializing.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The `Container` component.
+ */
 function Container({ children }: React.PropsWithChildren): JSX.Element {
   const isInit = useIsFirebaseInitialized();
 
@@ -48,6 +58,12 @@ function Container({ children }: React.PropsWithChildren): JSX.Element {
   );
 }
 
+/**
+ * A wrapper component that provides the app with the necessary providers and syncs.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The `Wrapper` component.
+ */
 function Wrapper({ children }: React.PropsWithChildren): JSX.Element {
   return (
     <Providers>

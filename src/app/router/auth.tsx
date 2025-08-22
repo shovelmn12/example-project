@@ -10,6 +10,10 @@ import {
   type JSX,
 } from "@/theme";
 
+/**
+ * The authentication screen.
+ * @returns The `AuthScreen` component.
+ */
 export function AuthScreen(): JSX.Element {
   const strings = useStrings();
 

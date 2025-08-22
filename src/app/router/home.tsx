@@ -2,6 +2,10 @@ import { useStrings } from "@/localizations";
 import { Button, type JSX, Page, PageContent } from "@/theme";
 import { useCallback, useLocation } from "@/utils";
 
+/**
+ * The home screen.
+ * @returns The `HomeScreen` component.
+ */
 export function HomeScreen(): JSX.Element {
   const [, navigate] = useLocation();
   const strings = useStrings();

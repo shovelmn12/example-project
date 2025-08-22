@@ -12,6 +12,11 @@ import { onCreate } from "./create";
 import { onDelete } from "./delete";
 import { onUpdate } from "./update";
 
+/**
+ * Creates the event handlers for the projects BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<ProjectsEvent, ProjectsState> {
@@ -25,6 +30,12 @@ function createHandlers(
   };
 }
 
+/**
+ * A provider for the projects BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The projects provider.
+ */
 export function ProjectsProvider({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useCreateBloc(

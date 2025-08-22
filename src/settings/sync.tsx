@@ -4,6 +4,12 @@ import { type AppEvent } from "@/app";
 
 import { useSettingsBloc } from ".";
 
+/**
+ * A component that syncs the settings BLoC with the event bus.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
 export function SettingsSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useSettingsBloc();

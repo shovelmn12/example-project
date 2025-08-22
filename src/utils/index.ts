@@ -1,3 +1,6 @@
+/**
+ * @fileoverview This file re-exports all the utilities.
+ */
 export * from "./id";
 export { default as mitt, type Emitter } from "mitt";
 export { useLocation } from "wouter";

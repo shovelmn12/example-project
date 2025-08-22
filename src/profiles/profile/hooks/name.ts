@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ProfileContext } from "..";
 
+/**
+ * A hook to get the name of a profile.
+ * @returns The name of the profile.
+ */
 export function useProfileName(): Option<ProfileName> {
   return useBlocSelectState(
     ProfileContext,

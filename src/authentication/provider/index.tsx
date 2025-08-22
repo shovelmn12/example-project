@@ -14,6 +14,12 @@ import { onLogout } from "./logout";
 import { onLoggedIn } from "./logged_in";
 import { onLoggedOut } from "./logged_out";
 
+/**
+ * Creates the event handlers for the auth BLoC.
+ * @param bus The event bus.
+ * @param firebase The Firebase app.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter,
   firebase: FirebaseApp
@@ -26,6 +32,12 @@ function createHandlers(
   };
 }
 
+/**
+ * A provider for the auth BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The auth provider.
+ */
 export function AuthProvider({ children }: React.PropsWithChildren) {
   const option = useFirebaseApp();
 
@@ -40,6 +52,13 @@ export function AuthProvider({ children }: React.PropsWithChildren) {
   );
 }
 
+/**
+ * The internal provider for the auth BLoC.
+ * @param props The props for the component.
+ * @param props.firebase The Firebase app.
+ * @param props.children The children to render.
+ * @returns The auth provider.
+ */
 function Provider({
   firebase,
   children,

@@ -4,6 +4,10 @@ import { useCallback } from "@/utils";
 import { Projects } from "@/theme/icons";
 import { useStrings } from "@/localizations";
 
+/**
+ * A button to create a new project.
+ * @returns The `CreateProject` component.
+ */
 export function CreateProject(): JSX.Element {
   const bus = useEventsBus();
   const strings = useStrings();

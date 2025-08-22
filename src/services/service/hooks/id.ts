@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ServiceContext } from "..";
 
+/**
+ * A hook to get the ID of a service.
+ * @returns The ID of the service.
+ */
 export function useServiceID(): Option<string> {
   return useBlocSelectState(
     ServiceContext,

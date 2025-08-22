@@ -3,6 +3,10 @@ import { useCallback } from "@/utils";
 
 import { SettingsContext, type SettingsState, type ThemeMode } from "..";
 
+/**
+ * A hook to get the theme mode.
+ * @returns The theme mode.
+ */
 export function useSettingsThemeMode(): ThemeMode {
   return useBlocSelectState(
     SettingsContext,

@@ -6,11 +6,26 @@ import { type FirebaseApp } from "@/firebase";
 
 import { type AuthState, type LogoutAuthEvent } from "..";
 
+/**
+ * The utils for the `onLogout` function.
+ */
 export interface LogoutUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
+  /**
+   * The Firebase app.
+   */
   readonly firebase: FirebaseApp;
 }
 
+/**
+ * Handles the `logout` event for the auth BLoC.
+ * @param _ The `logout` event.
+ * @param __ The BLoC context.
+ * @param utils The utils.
+ */
 export async function onLogout(
   _: LogoutAuthEvent,
   __: BlocContext<AuthState>,
