@@ -19,6 +19,7 @@ export function HomeScreen(): JSX.Element {
         <Button
           onClick={goToProjects}
           label={strings.home.actions.go_to_projects}
+          secondary
         />
         <Button
           onClick={goToServices}

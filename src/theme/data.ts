@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { generate, type ThemeType } from "grommet";
+
 import { deepMerge } from "@/utils";
 
 // --- 1. FOUNDATION ---
@@ -43,7 +43,7 @@ const shadcnTheme: ThemeType = {
       },
       border: {
         dark: "rgba(255, 255, 255, 0.1)", // --border (dark)
-        light: "#e8e8e8", // --border (light)
+        light: "#e5e5e5", // --border (light)
       },
       control: "brand",
       "active-background": "background-contrast",
@@ -86,96 +86,98 @@ const shadcnTheme: ThemeType = {
     },
   },
   button: {
-    // Default button is now the 'outline' style
-    background: "transparent",
+    background: "brand",
     border: {
       radius: "8px",
       width: "1px",
-      color: "border",
+      color: "transparent",
     },
-    color: "text",
+    color: { dark: "#272727", light: "#fbfbfb" },
+    elevation: "xsmall", // This adds the 'shadow-xs' effect.
     hover: {
-      background: "background-contrast",
-      color: "text",
+      default: {
+        background: {
+          color: { dark: "#f2f2f2", light: "#171717e6" },
+          opacity: "strong",
+        },
+      },
+      secondary: {
+        background: {
+          color: {
+            dark: "oklch(0.97 0 0 / 8)",
+            light: "#f5f5f5cc",
+          },
+          opacity: "strong",
+        },
+      },
     },
     disabled: {
       opacity: 0.5,
     },
-    // Primary button is the main filled style
+    default: {
+      background: "brand",
+      border: { color: "border" },
+      color: "text",
+      elevation: "none",
+      font: {
+        size: "medium",
+        weight: 500,
+      },
+    },
     primary: {
       background: "brand",
-      border: { color: "transparent" },
+      border: { color: "brand" },
       color: { dark: "#272727", light: "#fbfbfb" },
-      // hover: {
-      //   background: { dark: "#f2f2f2", light: "#1a1a1a" }, // Approximates bg-primary/90
-      // },
+      elevation: "none",
+      font: {
+        size: "medium",
+        weight: 500,
+      },
     },
-    // Secondary button style
     secondary: {
-      background: "control-secondary",
-      border: { color: "transparent" },
-      color: "text",
-      // hover: {
-      //   background: { dark: "#404040", light: "#f0f0f0" }, // Approximates bg-secondary/80
-      // },
+      background: "oklch(0.97 0 0)",
+      border: { color: "border" },
+      color: "oklch(0.205 0 0)",
+      elevation: "none",
+      font: {
+        size: "medium",
+        weight: 500,
+      },
     },
-    // Size definitions remain the same
     size: {
       small: {
         border: { radius: "8px" },
-        pad: {
-          vertical: "6px",
-          horizontal: "12px",
-        },
+        pad: { vertical: "6px", horizontal: "12px" },
       },
       medium: {
         border: { radius: "8px" },
-        pad: {
-          vertical: "8px",
-          horizontal: "16px",
-        },
-        iconOnly: {
-          pad: "8px",
-        },
+        pad: { vertical: "8px", horizontal: "16px" },
+        iconOnly: { pad: "8px" },
       },
       large: {
         border: { radius: "8px" },
-        pad: {
-          vertical: "8px",
-          horizontal: "24px",
-        },
+        pad: { vertical: "8px", horizontal: "24px" },
       },
     },
   },
   card: {
     container: {
-      elevation: "none",
-      background: "background-front", // Explicitly use the card background color
-      border: {
-        side: "all",
-        color: "border",
-        size: "1px",
-      },
-      round: "10px",
+      elevation: "none", // shadow-sm
+      background: "background-front",
+      border: { side: "all", color: "border", size: "1px" },
+      round: "14px", // rounded-xl
     },
     header: {
-      pad: { horizontal: "medium", vertical: "small" },
-      border: {
-        side: "bottom",
-        color: "border",
-        size: "1px",
-      },
+      // Creates the 'py-6' and horizontal padding
+      pad: { top: "medium", horizontal: "medium" },
     },
     body: {
-      pad: "medium",
+      // Creates the 'gap-6' and horizontal padding
+      pad: { vertical: "medium", horizontal: "medium" },
     },
     footer: {
-      pad: { horizontal: "medium", vertical: "small" },
-      border: {
-        side: "top",
-        color: "border",
-        size: "1px",
-      },
+      // Creates the 'py-6' and horizontal padding
+      pad: { bottom: "medium", horizontal: "medium" },
     },
   },
   formField: {
@@ -234,11 +236,11 @@ const shadcnTheme: ThemeType = {
     },
     container: {
       elevation: "none",
-      extend: ({ theme }: any) => `
-        border: 1px solid ${
-          theme.global.colors.border[theme.dark ? "dark" : "light"]
-        };
-      `,
+      // extend: ({ theme }: LayerProps & { theme: ThemeType & {dark:boolean} }) => `
+      //   border: 1px solid ${
+      //     theme.global?.colors?.border?.[theme.dark ? "dark" : "light"] ?? ''
+      //   };
+      // `,
     },
     overlay: {
       background: "rgba(0, 0, 0, 0.6)",
