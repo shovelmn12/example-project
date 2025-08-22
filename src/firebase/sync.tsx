@@ -4,6 +4,12 @@ import { type ConfigEvent } from "@/config";
 
 import { useFirebaseBloc } from ".";
 
+/**
+ * A component that syncs the Firebase BLoC with the event bus.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
 export function FirebaseSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useFirebaseBloc();

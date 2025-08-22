@@ -1,5 +1,8 @@
 import en from "./en";
 
+/**
+ * The type of the strings.
+ */
 export type Strings = {
   readonly header: {
     readonly actions: {

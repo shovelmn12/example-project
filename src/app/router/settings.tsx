@@ -9,6 +9,10 @@ import {
   type JSX,
 } from "@/theme";
 
+/**
+ * The settings screen.
+ * @returns The `SettingsScreen` component.
+ */
 export function SettingsScreen(): JSX.Element {
   return (
     <Page fill>

@@ -4,6 +4,10 @@ import { useCallback } from "@/utils";
 import { AddCircle } from "grommet-icons";
 import { useStrings } from "@/localizations";
 
+/**
+ * A button to create a new profile.
+ * @returns The `CreateProfile` component.
+ */
 export function CreateProfile(): JSX.Element {
   const bus = useEventsBus();
   const strings = useStrings();

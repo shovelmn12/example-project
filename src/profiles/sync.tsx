@@ -3,6 +3,12 @@ import { useEventsBus } from "@/events";
 
 import { useProfilesBloc } from "./hooks";
 
+/**
+ * A component that syncs the profiles BLoC with the event bus.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
 export function ProfilesSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useProfilesBloc();

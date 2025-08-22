@@ -6,6 +6,12 @@ import { useConfigShouldLog } from "@/config";
 
 import { useLogger } from ".";
 
+/**
+ * A component that syncs the logger with the event bus.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
 export function LoggerSync({ children }: React.PropsWithChildren): JSX.Element {
   if (useConfigShouldLog()) {
     return <Logger>{children}</Logger>;
@@ -14,6 +20,12 @@ export function LoggerSync({ children }: React.PropsWithChildren): JSX.Element {
   return <>{children}</>;
 }
 
+/**
+ * A component that logs all events from the event bus.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
 function Logger({ children }: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const logger = useLogger();

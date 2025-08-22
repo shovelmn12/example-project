@@ -9,6 +9,10 @@ const ProjectScreen = lazy(async () => ({
   default: (await import("./project")).ProjectScreen,
 }));
 
+/**
+ * The router for the projects feature.
+ * @returns The `ProjectsRouter` component.
+ */
 export function ProjectsRouter(): JSX.Element {
   return (
     <Router base="/projects">

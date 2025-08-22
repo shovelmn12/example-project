@@ -4,10 +4,22 @@ import { type EventsEmitter } from "@/events";
 import { type ConfigState, type InitConfigEvent } from "..";
 import { none, parseBoolean } from "@/utils";
 
+/**
+ * The utils for the `onInit` function.
+ */
 export interface InitUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
 }
 
+/**
+ * Handles the `init` event for the config BLoC.
+ * @param _ The `init` event.
+ * @param context The BLoC context.
+ * @param utils The utils.
+ */
 export function onInit(
   _: InitConfigEvent,
   { update }: BlocContext<ConfigState>,

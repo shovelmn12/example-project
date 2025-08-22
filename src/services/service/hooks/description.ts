@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ServiceContext } from "..";
 
+/**
+ * A hook to get the description of a service.
+ * @returns The description of the service.
+ */
 export function useServiceDescription(): Option<string> {
   return useBlocSelectState(
     ServiceContext,

@@ -3,6 +3,10 @@ import { useCallback } from "@/utils";
 
 import { ConfigContext, type ConfigState } from "..";
 
+/**
+ * A hook to check if the app should log.
+ * @returns `true` if the app should log, otherwise `false`.
+ */
 export function useConfigShouldLog(): boolean {
   return useBlocSelectState(
     ConfigContext,

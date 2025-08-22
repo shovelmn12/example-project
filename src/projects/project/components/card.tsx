@@ -16,10 +16,21 @@ import {
   useProjectID,
 } from "..";
 
+/**
+ * The props for the `ProjectCard` component.
+ */
 export interface ProjectCardProps {
+  /**
+   * The function to call when the card is clicked.
+   */
   readonly onClick?: () => void;
 }
 
+/**
+ * A card that displays a project.
+ * @param props The props for the component.
+ * @returns The `ProjectCard` component.
+ */
 export function ProjectCard({ onClick }: ProjectCardProps): JSX.Element {
   const bus = useEventsBus();
   const id = useProjectID();

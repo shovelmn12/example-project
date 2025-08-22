@@ -16,10 +16,21 @@ import {
   useServiceID,
 } from "..";
 
+/**
+ * The props for the `ServiceCard` component.
+ */
 export interface ServiceCardProps {
+  /**
+   * The function to call when the card is clicked.
+   */
   readonly onClick?: () => void;
 }
 
+/**
+ * A card that displays a service.
+ * @param props The props for the component.
+ * @returns The `ServiceCard` component.
+ */
 export function ServiceCard({ onClick }: ServiceCardProps): JSX.Element {
   const bus = useEventsBus();
   const id = useServiceID();

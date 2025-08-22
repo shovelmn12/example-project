@@ -9,6 +9,10 @@ const ServiceScreen = lazy(async () => ({
   default: (await import("./service")).ServiceScreen,
 }));
 
+/**
+ * The router for the services feature.
+ * @returns The `ServicesRouter` component.
+ */
 export function ServicesRouter(): JSX.Element {
   return (
     <Router base="/services">

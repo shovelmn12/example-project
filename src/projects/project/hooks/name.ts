@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ProjectContext } from "..";
 
+/**
+ * A hook to get the name of a project.
+ * @returns The name of the project.
+ */
 export function useProjectName(): Option<string> {
   return useBlocSelectState(
     ProjectContext,

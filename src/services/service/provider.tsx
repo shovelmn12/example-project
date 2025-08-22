@@ -9,10 +9,23 @@ import {
   useServicesBloc,
 } from "..";
 
+/**
+ * The props for the `ServiceProvider` component.
+ */
 export interface ServiceProviderProps {
+  /**
+   * The ID of the service.
+   */
   readonly id: string;
 }
 
+/**
+ * The internal provider for the service BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @param props.id The ID of the service.
+ * @returns The service provider.
+ */
 function Provider({
   children,
   id,
@@ -35,4 +48,7 @@ function Provider({
   );
 }
 
+/**
+ * A provider for the service BLoC.
+ */
 export const ServiceProvider = memo(Provider);

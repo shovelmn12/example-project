@@ -4,6 +4,10 @@ import { none, some, useCallback, type Option } from "@/utils";
 
 import { ServiceContext } from "..";
 
+/**
+ * A hook to get the name of a service.
+ * @returns The name of the service.
+ */
 export function useServiceName(): Option<string> {
   return useBlocSelectState(
     ServiceContext,

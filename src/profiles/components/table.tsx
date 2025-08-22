@@ -22,10 +22,20 @@ import {
   useProfilesIDs,
 } from "..";
 
+/**
+ * The ID of a profile.
+ */
 interface ID {
+  /**
+   * The ID of the profile.
+   */
   readonly id: string;
 }
 
+/**
+ * A table of profiles.
+ * @returns The `ProfilesTable` component.
+ */
 export function ProfilesTable(): JSX.Element {
   const [, navigate] = useLocation();
   const bus = useEventsBus();

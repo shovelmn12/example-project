@@ -9,10 +9,23 @@ import {
   useProjectsBloc,
 } from "..";
 
+/**
+ * The props for the `ProjectProvider` component.
+ */
 export interface ProjectProviderProps {
+  /**
+   * The ID of the project.
+   */
   readonly id: string;
 }
 
+/**
+ * The internal provider for the project BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @param props.id The ID of the project.
+ * @returns The project provider.
+ */
 function Provider({
   children,
   id,
@@ -35,4 +48,7 @@ function Provider({
   );
 }
 
+/**
+ * A provider for the project BLoC.
+ */
 export const ProjectProvider = memo(Provider);

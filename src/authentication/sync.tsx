@@ -6,6 +6,12 @@ import { useEventsBus } from "@/events";
 import { useAuthBloc } from ".";
 import { useFirebaseApp } from "@/firebase";
 
+/**
+ * A component that syncs the auth BLoC with the event bus and Firebase auth.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
 export function AuthSync({ children }: React.PropsWithChildren) {
   const bus = useEventsBus();
   const bloc = useAuthBloc();
