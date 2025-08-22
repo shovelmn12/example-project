@@ -9,6 +9,10 @@ const ProfileScreen = lazy(async () => ({
   default: (await import("./profile")).ProfileScreen,
 }));
 
+/**
+ * The router for the profiles feature.
+ * @returns The `ProfilesRouter` component.
+ */
 export function ProfilesRouter(): JSX.Element {
   return (
     <Router base="/profiles">

@@ -21,10 +21,20 @@ import {
   useServicesIDs,
 } from "..";
 
+/**
+ * The ID of a service.
+ */
 interface ID {
+  /**
+   * The ID of the service.
+   */
   readonly id: string;
 }
 
+/**
+ * A table of services.
+ * @returns The `ServicesTable` component.
+ */
 export function ServicesTable(): JSX.Element {
   const [, navigate] = useLocation();
   const bus = useEventsBus();

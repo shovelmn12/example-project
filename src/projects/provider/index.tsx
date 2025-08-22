@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
@@ -12,6 +13,11 @@ import { onCreate } from "./create";
 import { onDelete } from "./delete";
 import { onUpdate } from "./update";
 
+/**
+ * Creates the event handlers for the projects BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<ProjectsEvent, ProjectsState> {
@@ -25,7 +31,15 @@ function createHandlers(
   };
 }
 
-export function ProjectsProvider({ children }: React.PropsWithChildren) {
+/**
+ * A provider for the projects BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The projects provider.
+ */
+export function ProjectsProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useCreateBloc(
     useMemo<CreateBlocProps<ProjectsEvent, ProjectsState>>(

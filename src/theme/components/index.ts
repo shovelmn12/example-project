@@ -1,3 +1,6 @@
+/**
+ * @fileoverview Re-exports all the components.
+ */
 export {
   Box,
   Text,
@@ -33,8 +36,20 @@ export * from "./data_table";
 export * from "./switch";
 export * from "./google_button";
 
+/**
+ * The props for the children of the `Menu` component.
+ */
 export interface MenuChildrenProps {
+  /**
+   * Whether the menu is disabled.
+   */
   readonly disabled: boolean;
+  /**
+   * Whether the menu is in a drop.
+   */
   readonly drop: boolean;
+  /**
+   * Whether the menu is being hovered over.
+   */
   readonly hover: boolean;
 }

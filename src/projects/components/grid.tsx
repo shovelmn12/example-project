@@ -8,10 +8,20 @@ import {
   useProjectsIDs,
 } from "..";
 
+/**
+ * The ID of a project.
+ */
 interface ID {
+  /**
+   * The ID of the project.
+   */
   readonly id: string;
 }
 
+/**
+ * A grid of projects.
+ * @returns The `ProjectsGrid` component.
+ */
 export function ProjectsGrid(): JSX.Element {
   const [, navigate] = useLocation();
   const ids = useProjectsIDs();

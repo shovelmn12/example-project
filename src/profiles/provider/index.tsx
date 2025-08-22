@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
@@ -12,6 +13,11 @@ import { onCreate } from "./create";
 import { onDelete } from "./delete";
 import { onUpdate } from "./update";
 
+/**
+ * Creates the event handlers for the profiles BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<ProfilesEvent, ProfilesState> {
@@ -25,7 +31,15 @@ function createHandlers(
   };
 }
 
-export function ProfilesProvider({ children }: React.PropsWithChildren) {
+/**
+ * A provider for the profiles BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The profiles provider.
+ */
+export function ProfilesProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useCreateBloc(
     useMemo<CreateBlocProps<ProfilesEvent, ProfilesState>>(

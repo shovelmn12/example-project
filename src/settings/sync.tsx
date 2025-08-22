@@ -1,10 +1,19 @@
+import { type JSX } from "@/theme";
 import { useCallback, useEffect } from "@/utils";
 import { useEventsBus } from "@/events";
 import { type AppEvent } from "@/app";
 
 import { useSettingsBloc } from ".";
 
-export function SettingsSync({ children }: React.PropsWithChildren) {
+/**
+ * A component that syncs the settings BLoC with the event bus.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The component.
+ */
+export function SettingsSync({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useSettingsBloc();
   const onInit = useCallback(

@@ -23,6 +23,10 @@ const ServicesRouter = lazy(async () => ({
   default: (await import("./services")).ServicesRouter,
 }));
 
+/**
+ * The main router for the application.
+ * @returns The `Router` component.
+ */
 export function Router(): JSX.Element {
   const isInit = useIsAppInit();
   const isAuth = useIsAuth();

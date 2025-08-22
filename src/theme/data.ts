@@ -1,3 +1,8 @@
+/**
+ * @fileoverview This file contains all the themes for the application.
+ * It exports the default grommet theme, the hpe theme, and several custom themes.
+ */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { generate, type ThemeType } from "grommet";
 
 import { deepMerge } from "@/utils";
@@ -6,6 +11,10 @@ import { deepMerge } from "@/utils";
 // Generate the base theme using a 16px spacing unit to align with an 8px grid.
 const baseTheme: ThemeType = generate(16);
 
+/**
+ * A custom theme for the application.
+ */
+export const aTheme: ThemeType = {
 // --- 2. SHADCN-LIKE OVERRIDES ---
 // This object contains all the specific changes to map the shadcn aesthetic
 // onto the existing Grommet theme structure, now with the latest official colors.
@@ -114,6 +123,147 @@ const shadcnTheme: ThemeType = {
     disabled: {
       opacity: 0.5,
     },
+  },
+  formField: {
+    border: {
+      color: "border",
+      side: "all",
+      size: "1px",
+    },
+    label: {
+      margin: { vertical: "small", horizontal: "0" },
+      weight: 500,
+    },
+    round: "0.5rem",
+    focus: {
+      border: {
+        color: "focus",
+      },
+    },
+  },
+  checkBox: {
+    check: {
+      radius: "4px",
+    },
+    toggle: {
+      radius: "24px",
+      color: {
+        dark: "white",
+        light: "brand",
+      },
+    },
+  },
+  layer: {
+    background: "background-front",
+    border: {
+      radius: "0.75rem",
+    },
+    overlay: {
+      background: "rgba(0, 0, 0, 0.8)",
+    },
+  },
+  heading: {
+    font: {
+      family: "'Geist', sans-serif",
+    },
+    weight: 600,
+  },
+  icon: {
+    matchSize: true,
+  },
+};
+
+/**
+ * A second theme that follows the shadcn design system.
+ */
+export const shadcnTheme2: ThemeType = {
+  global: {
+    colors: {
+      background: {
+        light: "oklch(1 0 0)",
+        dark: "oklch(0.145 0 0)",
+      },
+      "background-front": {
+        light: "oklch(1 0 0)",
+        dark: "oklch(0.205 0 0)", // --card
+      },
+      "background-back": {
+        light: "oklch(1 0 0)",
+        dark: "oklch(0.145 0 0)",
+      },
+      text: {
+        light: "oklch(0.145 0 0)",
+        dark: "oklch(0.985 0 0)",
+      },
+      "text-weak": {
+        light: "oklch(0.556 0 0)", // --muted-foreground
+        dark: "oklch(0.708 0 0)",
+      },
+      brand: {
+        light: "oklch(0.205 0 0)", // --primary
+        dark: "oklch(0.922 0 0)",
+      },
+      border: {
+        light: "oklch(0.922 0 0)",
+        dark: "oklch(1 0 0 / 10%)",
+      },
+      control: "brand",
+      focus: {
+        light: "oklch(0.708 0 0)", // --ring
+        dark: "oklch(0.556 0 0)",
+      },
+      "accent-1": {
+        light: "oklch(0.97 0 0)", // --accent
+        dark: "oklch(0.269 0 0)",
+      },
+      "status-critical": {
+        light: "oklch(0.577 0.245 27.325)", // --destructive
+        dark: "oklch(0.704 0.191 22.216)",
+      },
+      // This is for the input field background
+      "input-background": {
+        light: "oklch(0.922 0 0)", // --input
+        dark: "oklch(1 0 0 / 15%)",
+      },
+    },
+    font: {
+      family:
+        "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      size: "16px",
+      height: "1.5rem",
+    },
+    hover: {
+      background: { color: "accent-1" },
+      color: {
+        light: "oklch(0.205 0 0)", // --accent-foreground
+        dark: "oklch(0.985 0 0)",
+      },
+    },
+    elevation: {
+      light: {
+        small:
+          "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+      },
+      dark: {
+        small:
+          "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+      },
+    },
+    input: {
+      padding: {
+        vertical: "8px",
+        horizontal: "12px",
+      },
+    },
+  },
+  button: {
+    border: {
+      radius: "0.625rem",
+      width: "0px",
+    },
+    padding: {
+      vertical: "10px",
+      horizontal: "16px",
     default: {
       background: "brand",
       border: { color: "border" },
@@ -182,6 +332,63 @@ const shadcnTheme: ThemeType = {
   },
   formField: {
     border: {
+      color: "border",
+      side: "all",
+    },
+    label: {
+      color: "text-weak",
+      margin: { bottom: "small" },
+    },
+    round: "4px",
+  },
+  textInput: {
+    extend: () => `
+      background-color: #333333;
+      color: #FFFFFF;
+      &::placeholder {
+        color: #8C8C8C;
+      }
+    `,
+  },
+};
+
+/**
+ * A theme for testing purposes.
+ */
+export const testTheme: ThemeType = {
+  global: {
+    colors: {
+      brand: {
+        dark: "#7700cc",
+        light: "#6600cc",
+      },
+      background: {
+        dark: "#111111",
+        light: "#FFFFFF",
+      },
+      "background-back": {
+        dark: "#111111",
+        light: "#EEEEEE",
+      },
+      "background-front": {
+        dark: "#222222",
+        light: "#FFFFFF",
+      },
+      "background-contrast": {
+        dark: "#FFFFFF11",
+        light: "#11111111",
+      },
+      text: {
+        dark: "#EEEEEE",
+        light: "#333333",
+      },
+      "text-strong": {
+        dark: "#FFFFFF",
+        light: "#000000",
+      },
+      "text-weak": {
+        dark: "#CCCCCC",
+        light: "#444444",
       side: "all", // Use a full box border instead of just the bottom
       color: {
         // --input color for dark mode is different from the border color

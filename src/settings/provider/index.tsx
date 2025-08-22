@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
@@ -11,6 +12,11 @@ import { SettingsContext, type SettingsEvent, type SettingsState } from "..";
 import { onInit } from "./init";
 import { onChangeThemeMode } from "./change_theme_mode";
 
+/**
+ * Creates the event handlers for the settings BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<SettingsEvent, SettingsState> {
@@ -23,7 +29,15 @@ function createHandlers(
   };
 }
 
-export function SettingsProvider({ children }: React.PropsWithChildren) {
+/**
+ * A provider for the settings BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The settings provider.
+ */
+export function SettingsProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useCreateBloc(
     useMemo<CreateBlocProps<SettingsEvent, SettingsState>>(

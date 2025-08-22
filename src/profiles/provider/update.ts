@@ -3,16 +3,28 @@ import { type EventsEmitter } from "@/events";
 
 import { type ProfilesState, type UpdateProfileEvent } from "..";
 
+/**
+ * The utils for the `onUpdate` function.
+ */
 export interface UpdateUtils {
+  /**
+   * The event bus.
+   */
   readonly bus: EventsEmitter;
 }
 
+/**
+ * Handles the `update` event for the profiles BLoC.
+ * @param event The `update` event.
+ * @param context The BLoC context.
+ * @param utils The utils.
+ */
 export function onUpdate(
   event: UpdateProfileEvent,
-  { value, update }: BlocContext<ProfilesState>,
+  { getState, update }: BlocContext<ProfilesState>,
   { bus }: UpdateUtils
 ): void {
-  const state = value[event.profile.id];
+  const state = getState()[event.profile.id];
 
   if (state.type === "init") {
     return;

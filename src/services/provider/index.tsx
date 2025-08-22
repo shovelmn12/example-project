@@ -1,3 +1,4 @@
+import { type JSX } from "@/theme";
 import { noOp, useMemo } from "@/utils";
 import {
   useCreateBloc,
@@ -6,16 +7,17 @@ import {
 } from "@/bloc";
 import { type EventsEmitter, useEventsBus } from "@/events";
 
-import {
-  type ServicesEvent,
-  ServicesContext,
-  type ServicesState,
-} from "..";
+import { type ServicesEvent, ServicesContext, type ServicesState } from "..";
 
 import { onCreate } from "./create";
 import { onDelete } from "./delete";
 import { onUpdate } from "./update";
 
+/**
+ * Creates the event handlers for the services BLoC.
+ * @param bus The event bus.
+ * @returns The event handlers.
+ */
 function createHandlers(
   bus: EventsEmitter
 ): EventHandlersObject<ServicesEvent, ServicesState> {
@@ -29,7 +31,15 @@ function createHandlers(
   };
 }
 
-export function ServicesProvider({ children }: React.PropsWithChildren) {
+/**
+ * A provider for the services BLoC.
+ * @param props The props for the component.
+ * @param props.children The children to render.
+ * @returns The services provider.
+ */
+export function ServicesProvider({
+  children,
+}: React.PropsWithChildren): JSX.Element {
   const bus = useEventsBus();
   const bloc = useCreateBloc(
     useMemo<CreateBlocProps<ServicesEvent, ServicesState>>(
@@ -39,8 +49,6 @@ export function ServicesProvider({ children }: React.PropsWithChildren) {
   );
 
   return (
-    <ServicesContext.Provider value={bloc}>
-      {children}
-    </ServicesContext.Provider>
+    <ServicesContext.Provider value={bloc}>{children}</ServicesContext.Provider>
   );
 }

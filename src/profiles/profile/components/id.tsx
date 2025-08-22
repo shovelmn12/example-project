@@ -2,6 +2,10 @@ import { type JSX } from "@/theme";
 
 import { useProfileID } from "../hooks";
 
+/**
+ * A component that displays the ID of a profile.
+ * @returns The `ProfileIDComponent` component.
+ */
 export function ProfileIDComponent(): JSX.Element {
   const id = useProfileID();
 
