@@ -2,7 +2,6 @@
  * @fileoverview This file contains all the themes for the application.
  * It exports the default grommet theme, the hpe theme, and several custom themes.
  */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { generate, type ThemeType } from "grommet";
 
 import { deepMerge } from "@/utils";
