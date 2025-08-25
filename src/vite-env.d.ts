@@ -12,6 +12,11 @@ interface ImportMetaEnv {
    * Whether to log.
    */
   readonly VITE_LOG?: string;
+  /**
+   * The base URL for the API.
+   * This is an environment variable set in the Vite configuration.
+   */
+  readonly VITE_API_URL: string;
 }
 
 /**

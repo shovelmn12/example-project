@@ -26,11 +26,13 @@ export function onInit(
   { bus }: InitUtils
 ): void {
   try {
+    const env = import.meta.env;
     const config = {
       env: {
-        firebase: JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG),
+        firebase: JSON.parse(env.VITE_FIREBASE_CONFIG),
+        api_url: env.VITE_API_URL,
       },
-      log: parseBoolean(import.meta.env.VITE_LOG, import.meta.env.DEV),
+      log: parseBoolean(env.VITE_LOG, env.DEV),
     };
 
     update({
